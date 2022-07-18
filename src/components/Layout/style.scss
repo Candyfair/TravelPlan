@@ -1,0 +1,24 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.global {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  color: $text;
+  padding: $spacer;
+  background: linear-gradient(179.97deg, $background 1.48%, $background-light 118.64%);
+}
+
+.header {
+  @include flexCenter(flex-end, center, row);
+  margin-bottom: $spacer*1.5;
+}
+
+.content {
+  @include flexCenter(center, center, column);
+}
+
+.footer {
+  margin-top: auto;
+}
