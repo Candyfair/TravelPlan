@@ -1,0 +1,21 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.content {
+
+  &__header {
+    @include flexCenter(space-around, flex-start, row);
+    padding-left: ($spacer*4)-24px;
+    padding-right: $spacer*4;
+
+    &__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    &__img {
+      margin-right: calc($spacer/2);
+    }
+  }
+}
