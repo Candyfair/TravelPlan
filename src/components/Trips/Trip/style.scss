@@ -3,19 +3,64 @@
 
 .trip {
   @include flexCenter(space-between, center, row);
+  margin-bottom: $spacer;
+  min-width: 350px;
+  max-width: 450px;
 
-  &__first-square {
-    @include flexCenter(center, center, column);
-    width: 80px;
+  &__frame {
+    @include flexCenter(space-between, center, column);
+    max-width: 80px;
     height: 80px;
     border: solid $frame 1px;
     border-radius: 8px;
     padding: calc($spacer/2);
+    flex: 1;
 
     &__date {
       font-size: 0.9rem;
       font-weight: 700;
     }
+
+    &__transport {
+      @include flexCenter(center, center, column);
+      
+      &__name {
+        font-size: 0.6rem;
+        font-weight: 400;
+      }
+    }
+
+    &__details {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: $booking-details;
+      text-align: center;
+    }
   }
 
+  &__middle {
+    @include flexCenter(space-between, flex-start, row);
+    margin-left: $spacer*1.5;
+    margin-right: $spacer*1.5;
+    flex: 1;
+
+    &__timetable {
+      @include flexCenter(space-between, center, column);
+      height: 64px;
+    }
+
+    &__time {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    &__city {
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.details {
+  @include flexCenter(center, center, column);
 }
