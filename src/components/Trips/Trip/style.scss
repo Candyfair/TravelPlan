@@ -1,0 +1,21 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.trip {
+  @include flexCenter(space-between, center, row);
+
+  &__first-square {
+    @include flexCenter(center, center, column);
+    width: 80px;
+    height: 80px;
+    border: solid $frame 1px;
+    border-radius: 8px;
+    padding: calc($spacer/2);
+
+    &__date {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+  }
+
+}

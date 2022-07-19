@@ -1,13 +1,15 @@
 import './style.scss';
 
-import location from '../../assets/images/location.svg';
+import Trips from '../../components/Trips';
 
 const Schedule = () => (
   <>
     <div className="content__header">
-      <img src={location} alt="Location pin" width={24} height={24} className="content__header__img" />
       <h1 className="content__header__title">Scottish Highlands Super Trip</h1>
     </div>
+
+    <Trips />
+
   </>
 );
 

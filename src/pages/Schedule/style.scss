@@ -7,15 +7,13 @@
     @include flexCenter(space-around, flex-start, row);
     padding-left: ($spacer*4)-24px;
     padding-right: $spacer*4;
+    margin-bottom: $spacer*1.5;
 
     &__title {
       font-size: 1.25rem;
       font-weight: 700;
       text-align: center;
-    }
-
-    &__img {
-      margin-right: calc($spacer/2);
+      margin-left: calc($spacer/2);
     }
   }
 }
