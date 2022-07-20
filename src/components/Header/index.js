@@ -1,12 +1,11 @@
 // import changeDestination from '../../assets/images/direction.svg';
 import Icon from '../Icon';
-import ICONS from '../../utils/constants';
+import * as CONSTANTS from '../../utils/constants';
 
 const Header = () => (
   <>
     <p>Change destination</p>
-    {/* <img src={changeDestination} alt="Change direction" width={24} height={24} /> */}
-    <Icon icon={ICONS.direction} size="22" />
+    <Icon icon={CONSTANTS.ICONS.direction} size="22" viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
   </>
 );
 

@@ -1,7 +1,7 @@
 import './style.scss';
 
 import Icon from '../../Icon';
-import ICONS from '../../../utils/constants';
+import * as CONSTANTS from '../../../utils/constants';
 
 const Trip = () => (
   <div className="trip">
@@ -11,7 +11,7 @@ const Trip = () => (
       <p className="trip__frame__date">21st July</p>
 
       <div className="trip__frame__transport">
-        <Icon icon={ICONS.train} size={27} viewbox="0 0 24 24" />
+        <Icon icon={CONSTANTS.ICONS.train} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
         <p className="trip__frame__transport__name">Eurostar</p>
       </div>
     </div>
@@ -25,7 +25,7 @@ const Trip = () => (
       </div>
 
       <div className="trip__middle_arrows">
-        <Icon icon={ICONS.arrows} size={22} viewbox="0 0 14 15" />
+        <Icon icon={CONSTANTS.ICONS.arrows} size={22} viewbox={CONSTANTS.VIEWBOX.viewboxArrows} />
       </div>
 
       <div className="trip__middle__timetable">

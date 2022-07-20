@@ -9,7 +9,7 @@ const Icon = ({ icon, size, viewbox }) => (
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
-  viewbox: PropTypes.string.isRequired
+  viewbox: PropTypes.string.isRequired,
 };
 
 export default Icon;
