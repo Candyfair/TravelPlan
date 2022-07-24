@@ -27,6 +27,7 @@
       &__name {
         font-size: 0.6rem;
         font-weight: 400;
+        text-align: center;
       }
     }
 
@@ -40,8 +41,8 @@
 
   &__middle {
     @include flexCenter(space-between, flex-start, row);
-    margin-left: $spacer*1.5;
-    margin-right: $spacer*1.5;
+    margin-left: calc($spacer/2);
+    margin-right: calc($spacer/2);
     flex: 1;
 
     &__timetable {
@@ -52,11 +53,13 @@
     &__time {
       font-size: 0.9rem;
       font-weight: 700;
+      text-align: center;
     }
 
     &__city {
       font-size: 0.9rem;
       font-weight: 400;
+      text-align: center
     }
   }
 }

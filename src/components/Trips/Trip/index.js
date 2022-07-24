@@ -1,46 +1,123 @@
+import PropTypes from 'prop-types';
+
 import './style.scss';
 
 import Icon from '../../Icon';
 import * as CONSTANTS from '../../../utils/constants';
 
-const Trip = () => (
-  <div className="trip">
+const Trip = ({
+  id,
+  dateDeparture,
+  timeDeparture,
+  timeArrival,
+  travelType,
+  travelName,
+  placeDeparture,
+  placeArrival,
+  details,
+}) => {
+  let type = '';
 
-    {/* First frame */}
-    <div className="trip__frame">
-      <p className="trip__frame__date">21st July</p>
+  switch (travelType) {
+    case 'fasttrain':
+      type = CONSTANTS.ICONS.fasttrain;
+      break;
 
-      <div className="trip__frame__transport">
-        <Icon icon={CONSTANTS.ICONS.train} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
-        <p className="trip__frame__transport__name">Eurostar</p>
+    case 'train':
+      type = CONSTANTS.ICONS.train;
+      break;
+
+    case 'boat':
+      type = CONSTANTS.ICONS.boat;
+      break;
+
+    case 'bus':
+      type = CONSTANTS.ICONS.bus;
+      break;
+
+    case 'car':
+      type = CONSTANTS.ICONS.car;
+      break;
+
+    case 'metro':
+      type = CONSTANTS.ICONS.metro;
+      break;
+
+    case 'hotel':
+      type = CONSTANTS.ICONS.hotel;
+      break;
+
+    case 'plane':
+      type = CONSTANTS.ICONS.plane;
+      break;
+
+    case 'restaurant':
+      type = CONSTANTS.ICONS.restaurant;
+      break;
+
+    case 'taxi':
+      type = CONSTANTS.ICONS.taxi;
+      break;
+
+    case 'tramway':
+      type = CONSTANTS.ICONS.tramway;
+      break;
+
+    default:
+      return type;
+  }
+
+  return (
+    <div className="trip" key={id}>
+
+      {/* First frame */}
+      <div className="trip__frame">
+        <p className="trip__frame__date">{dateDeparture}</p>
+
+        <div className="trip__frame__transport">
+          <Icon icon={type} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+          <p className="trip__frame__transport__name">{travelName}</p>
+        </div>
       </div>
+
+      {/* Middle part */}
+      <div className="trip__middle">
+
+        <div className="trip__middle__timetable">
+          <p className="trip__middle__time">{timeDeparture}</p>
+          <p className="trip__middle__city">{placeDeparture}</p>
+        </div>
+
+        <div className="trip__middle_arrows">
+          <Icon icon={CONSTANTS.ICONS.arrows} size={22} viewbox={CONSTANTS.VIEWBOX.viewboxArrows} />
+        </div>
+
+        <div className="trip__middle__timetable">
+          <p className="trip__middle__time">{timeArrival}</p>
+          <p className="trip__middle__city">{placeArrival}</p>
+        </div>
+      </div>
+
+      {/* Last frame */}
+      <div className="trip__frame details">
+        <p className="trip__frame__details">{details}</p>
+
+      </div>
+
     </div>
+  );
+};
 
-    {/* Middle part */}
-    <div className="trip__middle">
-
-      <div className="trip__middle__timetable">
-        <p className="trip__middle__time">15:13</p>
-        <p className="trip__middle__city">Paris</p>
-      </div>
-
-      <div className="trip__middle_arrows">
-        <Icon icon={CONSTANTS.ICONS.arrows} size={22} viewbox={CONSTANTS.VIEWBOX.viewboxArrows} />
-      </div>
-
-      <div className="trip__middle__timetable">
-        <p className="trip__middle__time">16:30</p>
-        <p className="trip__middle__city">London</p>
-      </div>
-    </div>
-
-    {/* Last frame */}
-    <div className="trip__frame details">
-      <p className="trip__frame__details">Coach 10 55 / 56</p>
-
-    </div>
-
-  </div>
-);
+Trip.propTypes = {
+  id: PropTypes.number.isRequired,
+  dateDeparture: PropTypes.string.isRequired,
+  timeDeparture: PropTypes.string.isRequired,
+  timeArrival: PropTypes.string.isRequired,
+  travelType: PropTypes.string.isRequired,
+  travelName: PropTypes.string.isRequired,
+  placeDeparture: PropTypes.string.isRequired,
+  placeArrival: PropTypes.string.isRequired,
+  details: PropTypes.string.isRequired,
+};
 
 export default Trip;

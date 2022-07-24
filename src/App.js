@@ -11,18 +11,25 @@ import {
   Schedule,
 } from './pages';
 
+import data from './data/scottishJourney';
+
 // == Composant
-const App = () => (
-  <div className="app">
-    <ScrollTop />
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} exact />
-        <Route path="/schedule" element={<Schedule />} />
-      </Routes>
-    </Layout>
-  </div>
-);
+const App = () => {
+  const { journeyName, journeyDetails } = data;
+  console.log(`APP / journeyName: ${journeyName}`);
+
+  return (
+    <div className="app">
+      <ScrollTop />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} exact />
+          <Route path="/schedule" element={<Schedule destination={journeyName} details={journeyDetails} />} />
+        </Routes>
+      </Layout>
+    </div>
+  );
+};
 
 // == Export
 export default App;
