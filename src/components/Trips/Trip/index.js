@@ -81,7 +81,7 @@ const Trip = ({
       </div>
 
       {/* Middle part */}
-      <div className="trip__middle">
+      <div className={`trip__middle${travelType === 'hotel' ? ' hide' : ''}`}>
 
         <div className="trip__middle__timetable">
           <p className="trip__middle__time">{timeDeparture}</p>
@@ -96,6 +96,12 @@ const Trip = ({
           <p className="trip__middle__time">{timeArrival}</p>
           <p className="trip__middle__city">{placeArrival}</p>
         </div>
+      </div>
+
+      {/* Case: hotel */}
+      <div className={`trip__middle${travelType === 'hotel' ? ' center' : ' hide'}`}>
+        <p className="trip__middle__stay-label">Stay in</p>
+        <p className="trip__middle__stay">{placeDeparture}</p>
       </div>
 
       {/* Last frame */}

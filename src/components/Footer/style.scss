@@ -1,7 +1,11 @@
+@import '../../styles/vars';
+
 .footer {
 
   &__text {
-    font-size: 0.8rem;
+    color: $text-footer;
+    font-size: 0.7rem;
     text-align: center;
+    padding-top: $spacer*1.5;
   }
 }

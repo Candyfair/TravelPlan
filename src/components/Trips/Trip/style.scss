@@ -61,9 +61,31 @@
       font-weight: 400;
       text-align: center
     }
+
+    // Hotel
+    &__stay-label {
+      font-size: 0.7rem;
+      margin-bottom: 3px;
+    }
+
+    &__stay {
+      font-size: 1rem;
+      border: 1px solid $text;
+      padding: 6px;
+      border-radius: 3px;
+    }
   }
 }
 
 .details {
+  @include flexCenter(center, center, column);
+}
+
+// Hotel
+.hide {
+  display: none;
+}
+
+.center {
   @include flexCenter(center, center, column);
 }
