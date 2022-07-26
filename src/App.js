@@ -19,7 +19,7 @@ import dataScotland from './data/scottishJourney';
 const App = () => {
   // Pick up destination from State
   const { destination } = useSelector((state) => state.journey);
-  const data = destination === 'Europe' ? dataEurope : dataScotland;
+  const data = destination === 'Scotland' ? dataScotland : dataEurope;
 
   const { journeyName, journeyDetails } = data;
   console.log(`APP / journeyName: ${journeyName}`);
