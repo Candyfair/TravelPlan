@@ -1,0 +1,15 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.header {
+
+  &__link {
+    @include flexCenter(space-between, center, row);
+  }
+}
+
+@media only screen and (min-width: $tablet) {
+  .header {
+    max-width: 1200px;
+  }
+}

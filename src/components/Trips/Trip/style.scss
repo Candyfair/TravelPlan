@@ -48,6 +48,7 @@
     &__timetable {
       @include flexCenter(space-between, center, column);
       height: 64px;
+      min-width: 80px;
     }
 
     &__time {

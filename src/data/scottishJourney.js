@@ -3,7 +3,7 @@ export default {
   journeyDetails: [
     {
       id: 1,
-      dateDeparture: '21 July',
+      dateDeparture: '21/07/2022',
       timeDeparture: '15:13',
       dateArrival: '21/07/2022',
       timeArrival: '16:30',
@@ -15,7 +15,7 @@ export default {
     },
     {
       id: 2,
-      dateDeparture: '21 July',
+      dateDeparture: '21/07/2022',
       timeDeparture: '21:15',
       dateArrival: '22/07/2022',
       timeArrival: '08:47',
@@ -27,19 +27,19 @@ export default {
     },
     {
       id: 3,
-      dateDeparture: '22 July',
+      dateDeparture: '22/07/2022',
       timeDeparture: '10:56',
       dateArrival: '22/07/2022',
       timeArrival: '13:35',
-      travelType: 'tain',
+      travelType: 'train',
       travelName: 'Scot Rail',
-      placeDeparture: 'Inveness',
+      placeDeparture: 'Inverness',
       placeArrival: 'Kyle of Lochalsh',
       details: '',
     },
     {
       id: 4,
-      dateDeparture: '22 July',
+      dateDeparture: '22/07/2022',
       timeDeparture: '14:00',
       dateArrival: '22/07/2022',
       timeArrival: '15:00',
@@ -51,9 +51,9 @@ export default {
     },
     {
       id: 5,
-      dateDeparture: '22 July',
+      dateDeparture: '22/07/2022',
       timeDeparture: '',
-      dateArrival: '',
+      dateArrival: '23/07/2022',
       timeArrival: '',
       travelType: 'hotel',
       travelName: 'B&B',
@@ -63,7 +63,7 @@ export default {
     },
     {
       id: 6,
-      dateDeparture: '23 July',
+      dateDeparture: '23/07/2022',
       timeDeparture: '11:00',
       dateArrival: '23/07/2022',
       timeArrival: '15:00',
@@ -75,9 +75,9 @@ export default {
     },
     {
       id: 7,
-      dateDeparture: '23 July',
+      dateDeparture: '23/07/2022',
       timeDeparture: '',
-      dateArrival: '',
+      dateArrival: '30/07/2022',
       timeArrival: '',
       travelType: 'hotel',
       travelName: 'Rental',
@@ -87,7 +87,7 @@ export default {
     },
     {
       id: 8,
-      dateDeparture: '30 July',
+      dateDeparture: '30/07/2022',
       timeDeparture: '08:30',
       dateArrival: '30/07/2022',
       timeArrival: '09:30',
@@ -99,7 +99,7 @@ export default {
     },
     {
       id: 9,
-      dateDeparture: '30 July',
+      dateDeparture: '30/07/2022',
       timeDeparture: '10:20',
       dateArrival: '30/07/2022',
       timeArrival: '11:25',
@@ -111,7 +111,7 @@ export default {
     },
     {
       id: 10,
-      dateDeparture: '30 July',
+      dateDeparture: '30/07/2022',
       timeDeparture: '15:00',
       dateArrival: '30/07/2022',
       timeArrival: '15:30',
@@ -123,7 +123,7 @@ export default {
     },
     {
       id: 11,
-      dateDeparture: '30 July',
+      dateDeparture: '30/07/2022',
       timeDeparture: '16:05',
       dateArrival: '30/07/2022',
       timeArrival: '21:25',
@@ -135,9 +135,9 @@ export default {
     },
     {
       id: 12,
-      dateDeparture: '30 July',
+      dateDeparture: '30/07/2022',
       timeDeparture: '',
-      dateArrival: '',
+      dateArrival: '02/08/2022',
       timeArrival: '',
       travelType: 'hotel',
       travelName: 'Marriot',
@@ -147,7 +147,7 @@ export default {
     },
     {
       id: 13,
-      dateDeparture: '02 Aug.',
+      dateDeparture: '02/08/2022',
       timeDeparture: '23:40',
       dateArrival: '03/08/2022',
       timeArrival: '07:07',
@@ -159,7 +159,7 @@ export default {
     },
     {
       id: 14,
-      dateDeparture: '03 Aug.',
+      dateDeparture: '03/08/2022',
       timeDeparture: '19:01',
       dateArrival: '03/08/2022',
       timeArrival: '21:17',

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import './style.scss';
 
@@ -9,6 +10,7 @@ const Trip = ({
   id,
   dateDeparture,
   timeDeparture,
+  dateArrival,
   timeArrival,
   travelType,
   travelName,
@@ -16,8 +18,8 @@ const Trip = ({
   placeArrival,
   details,
 }) => {
+  // Show transport icon
   let type = '';
-
   switch (travelType) {
     case 'fasttrain':
       type = CONSTANTS.ICONS.fasttrain;
@@ -67,12 +69,17 @@ const Trip = ({
       return type;
   }
 
+  // Convert dates
+  const departureDate = moment(dateDeparture, 'DD-MM-AAAA');
+  const arrivalDate = moment(dateArrival, 'DD-MM-AAAA');
+  const nbNights = arrivalDate.diff(departureDate, 'days');
+
   return (
     <div className="trip" key={id}>
 
       {/* First frame */}
       <div className="trip__frame">
-        <p className="trip__frame__date">{dateDeparture}</p>
+        <p className="trip__frame__date">{moment(departureDate).format('DD MMM')}</p>
 
         <div className="trip__frame__transport">
           <Icon icon={type} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
@@ -100,7 +107,7 @@ const Trip = ({
 
       {/* Case: hotel */}
       <div className={`trip__middle${travelType === 'hotel' ? ' center' : ' hide'}`}>
-        <p className="trip__middle__stay-label">Stay in</p>
+        <p className="trip__middle__stay-label">{nbNights} night{nbNights > 1 ? 's' : ''} in</p>
         <p className="trip__middle__stay">{placeDeparture}</p>
       </div>
 
@@ -117,6 +124,7 @@ const Trip = ({
 Trip.propTypes = {
   id: PropTypes.number.isRequired,
   dateDeparture: PropTypes.string.isRequired,
+  dateArrival: PropTypes.string.isRequired,
   timeDeparture: PropTypes.string.isRequired,
   timeArrival: PropTypes.string.isRequired,
   travelType: PropTypes.string.isRequired,

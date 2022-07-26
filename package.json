@@ -48,11 +48,12 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.3.0",
-    "redux": "^4.1.2"
+    "redux": "^4.2.0"
   }
 }

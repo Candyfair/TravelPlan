@@ -1,19 +1,20 @@
-// journeyName: 'Europe Inter-Rail Fab Trip',
-
 export default {
+  journeyName: 'Europe Inter-Rail Fab Trip',
   journeyDetails: [
     {
+      id: 1,
       dateDeparture: '15/08/2022',
       timeDeparture: '09:55',
       dateArrival: '15/08/2022',
       timeArrival: '16:30',
-      travelType: 'fast-train',
+      travelType: 'fasttrain',
       travelName: 'Thalys',
       placeDeparture: 'Paris',
       placeArrival: 'Cologne',
       details: 'Voiture 27',
     },
     {
+      id: 2,
       dateDeparture: '15/08/2022',
       timeDeparture: '',
       dateArrival: '',
@@ -25,6 +26,7 @@ export default {
       details: 'Deutz-Mülheimer-Str',
     },
     {
+      id: 3,
       dateDeparture: '16/08/2022',
       timeDeparture: '16:04',
       dateArrival: '16/08/2022',
@@ -36,6 +38,7 @@ export default {
       details: 'ICE1030',
     },
     {
+      id: 4,
       dateDeparture: '16/08/2022',
       timeDeparture: '',
       dateArrival: '',
@@ -47,6 +50,7 @@ export default {
       details: 'Frühstück',
     },
     {
+      id: 5,
       dateDeparture: '18/08/2022',
       timeDeparture: '13:36',
       dateArrival: '18/08/2022',
@@ -58,6 +62,7 @@ export default {
       details: 'ICE613',
     },
     {
+      id: 6,
       dateDeparture: '18/08/2022',
       timeDeparture: '',
       dateArrival: '',
@@ -69,6 +74,7 @@ export default {
       details: 'Kleine Domsfreiheit 5',
     },
     {
+      id: 7,
       dateDeparture: '19/08/2022',
       timeDeparture: '13:53',
       dateArrival: '19/08/2022',
@@ -80,6 +86,7 @@ export default {
       details: 'IC146 & IC 653 - Change at Amersfoort ',
     },
     {
+      id: 8,
       dateDeparture: '19/08/2022',
       timeDeparture: '',
       dateArrival: '',
@@ -91,11 +98,12 @@ export default {
       details: 'Coolsingel / Aert van Nesstraat 4\nCentrum',
     },
     {
+      id: 9,
       dateDeparture: '21/08/2022',
       timeDeparture: '16:58',
       dateArrival: '21/08/2022',
       timeArrival: '19:35',
-      travelType: 'fast-train',
+      travelType: 'fasttrain',
       travelName: 'Thalys',
       placeDeparture: 'Rotterdam',
       placeArrival: 'Paris',
