@@ -1,4 +1,5 @@
 // == Import
+import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import './styles/index.scss';
@@ -11,11 +12,15 @@ import {
   Schedule,
 } from './pages';
 
-import data from './data/scottishJourney';
-// import data from './data/europeJourney';
+import dataEurope from './data/europeJourney';
+import dataScotland from './data/scottishJourney';
 
 // == Composant
 const App = () => {
+  // Pick up destination from State
+  const { destination } = useSelector((state) => state.journey);
+  const data = destination === 'Europe' ? dataEurope : dataScotland;
+
   const { journeyName, journeyDetails } = data;
   console.log(`APP / journeyName: ${journeyName}`);
 

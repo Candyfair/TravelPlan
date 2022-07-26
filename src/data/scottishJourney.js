@@ -11,7 +11,7 @@ export default {
       travelName: 'Eurostar',
       placeDeparture: 'Paris',
       placeArrival: 'London',
-      details: '',
+      details: 'Coach 10 55 / 56',
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export default {
       travelName: 'Scot Rail',
       placeDeparture: 'Inverness',
       placeArrival: 'Kyle of Lochalsh',
-      details: '',
+      details: 'No reservation',
     },
     {
       id: 4,
@@ -131,7 +131,7 @@ export default {
       travelName: 'Scot Rail',
       placeDeparture: 'Morar',
       placeArrival: 'Glasgow',
-      details: '',
+      details: 'No reservation',
     },
     {
       id: 12,
@@ -167,7 +167,7 @@ export default {
       travelName: 'Eurostar',
       placeDeparture: 'London',
       placeArrival: 'Paris',
-      details: '',
+      details: 'Coach 12 11 / 12',
     },
   ],
 };

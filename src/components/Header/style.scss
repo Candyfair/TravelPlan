@@ -3,8 +3,17 @@
 
 .header {
 
-  &__link {
+  &__block {
     @include flexCenter(space-between, center, row);
+
+    &__link {
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }
 

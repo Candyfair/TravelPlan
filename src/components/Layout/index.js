@@ -1,22 +1,32 @@
+import { useSelector } from 'react-redux';
+
 import './style.scss';
 
 import Header from '../Header';
 import Footer from '../Footer';
 
-const Layout = ({ children }) => (
-  <div className="global">
-    <header className="header">
-      <Header />
-    </header>
+const Layout = ({ children }) => {
+  const { isSelected } = useSelector((state) => state.journey);
 
-    <main className="content">
-      {children}
-    </main>
+  return (
+    <div className="global">
+      {
+        isSelected && (
+          <header className="header">
+            <Header />
+          </header>
+        )
+      }
 
-    <footer className="footer">
-      <Footer />
-    </footer>
-  </div>
-);
+      <main className="content">
+        {children}
+      </main>
+
+      <footer className="footer">
+        <Footer />
+      </footer>
+    </div>
+  );
+};
 
 export default Layout;

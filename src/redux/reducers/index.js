@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import journey from './journey';
 
 export default combineReducers({
-  counter,
+  journey,
 });
