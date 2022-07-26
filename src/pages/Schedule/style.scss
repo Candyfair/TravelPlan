@@ -4,7 +4,7 @@
 .content {
 
   &__header {
-    @include flexCenter(space-around, flex-start, row);
+    @include flexCenter(space-around, center, column);
     padding-left: $spacer*4;
     padding-right: $spacer*4;
     margin-bottom: $spacer*1.5;
@@ -13,7 +13,14 @@
       font-size: 1.25rem;
       font-weight: 700;
       text-align: center;
-      margin-left: calc($spacer/2);
+      margin-bottom: calc($spacer/2);
+    }
+
+    &__subtitle {
+      // font-weight: 700;
+      text-align: center;
+      font-size: 0.8rem;
+
     }
   }
 }
