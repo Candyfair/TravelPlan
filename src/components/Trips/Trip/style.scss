@@ -90,3 +90,9 @@
 .center {
   @include flexCenter(center, center, column);
 }
+
+// Date in the past
+.inactive {
+  background-color: $inactive;
+  border-radius: 8px;
+}

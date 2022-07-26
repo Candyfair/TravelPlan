@@ -29,8 +29,8 @@ const Home = () => {
 
       <h2 className="home__subtitle">Select your journey</h2>
       <ul className="home__destinations">
-        <li onClick={handleScotJourney}>Scotland</li>
-        <li onClick={handleEuropeJourney}>Europe</li>
+        <li onClick={handleScotJourney}>Scottish Highlands Super Trip</li>
+        <li onClick={handleEuropeJourney}>Europe Inter-Rail Fab Trip</li>
       </ul>
 
     </div>

@@ -78,7 +78,7 @@ const Trip = ({
     <div className="trip" key={id}>
 
       {/* First frame */}
-      <div className="trip__frame">
+      <div className={`trip__frame${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
         <p className="trip__frame__date">{moment(departureDate).format('DD MMM')}</p>
 
         <div className="trip__frame__transport">
@@ -108,11 +108,11 @@ const Trip = ({
       {/* Case: hotel */}
       <div className={`trip__middle${travelType === 'hotel' ? ' center' : ' hide'}`}>
         <p className="trip__middle__stay-label">{nbNights} night{nbNights > 1 ? 's' : ''} in</p>
-        <p className="trip__middle__stay">{placeDeparture}</p>
+        <p className={`trip__middle__stay${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>{placeDeparture}</p>
       </div>
 
       {/* Last frame */}
-      <div className="trip__frame details">
+      <div className={`trip__frame details${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
         <p className="trip__frame__details">{details}</p>
 
       </div>

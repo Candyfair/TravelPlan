@@ -4,22 +4,27 @@ import './style.scss';
 
 import Trip from './Trip';
 
-const Trips = ({ details }) => (
-  <div>
-    {
-      details.map((detailsObj) => (
-        <>
-          <Trip
-            key={detailsObj.id}
-            {...detailsObj}
-          />
+const Trips = ({ details }) => {
+  // console.table(details);
+  console.log(details.length);
 
-        </>
-      ))
-    }
+  return (
+    <div>
+      {
+        details.map((detailsObj) => (
+          <>
+            <Trip
+              key={detailsObj.id}
+              {...detailsObj}
+            />
 
-  </div>
-);
+          </>
+        ))
+      }
+
+    </div>
+  );
+};
 
 Trips.propTypes = {
   details: PropTypes.arrayOf(
