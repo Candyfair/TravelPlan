@@ -15,6 +15,9 @@ import {
 import dataEurope from './data/europeJourney';
 import dataScotland from './data/scottishJourney';
 
+// Static data for sharing link
+import dataEuropeStatic from './data/europeJourney2';
+
 // == Composant
 const App = () => {
   // Pick up destination from State
@@ -24,6 +27,9 @@ const App = () => {
   const { journeyName, journeyDetails } = data;
   console.log(`APP / journeyName: ${journeyName}`);
 
+  // Static data for sharing link
+  const { journeyNameEurope, journeyDetailsEurope } = dataEuropeStatic;
+
   return (
     <div className="app">
       <ScrollTop />
@@ -31,6 +37,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/schedule" element={<Schedule destination={journeyName} details={journeyDetails} />} />
+
+          {/* Route for sharing static data */}
+          <Route path="/europe-journey" element={<Schedule destination={journeyNameEurope} details={journeyDetailsEurope} />} />
         </Routes>
       </Layout>
     </div>
