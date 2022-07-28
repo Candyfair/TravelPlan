@@ -1,7 +1,8 @@
-import { SET_ICON } from '../actions/create';
+import { CHANGE_VALUE, SET_ICON } from '../actions/create';
 
 const initialState = {
   icon: 'suspension',
+  journeyName: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -10,6 +11,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         icon: action.value,
+      };
+
+    case CHANGE_VALUE:
+      return {
+        ...state,
+        [action.key]: action.value,
       };
 
     default:

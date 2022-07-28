@@ -1,0 +1,36 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.create {
+
+  &__wrapper {
+
+    &__transport-type-form {
+      @include flexCenter(space-around, flex-start, row);
+
+    }
+
+    &__transport-type-input {
+      @include flexCenter(space-between, flex-start, column);
+    }
+  }
+
+  &__form {
+
+    &__label {
+      margin-bottom: 4px;
+    }
+
+    &__input {
+      width: 230px;
+    }
+
+    &__icon {
+      border: 1px solid $text;
+      border-radius: 8px;
+      width: 60px;
+      height: 60px;
+      @include flexCenter(center, center, column);
+    }
+  }
+}

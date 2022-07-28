@@ -3,44 +3,20 @@
 
 .create {
 
-  &__wrapper {
-
-    &__transport-type-form {
-      @include flexCenter(space-around, flex-start, row);
-
-    }
-
-    &__transport-type-input {
-      @include flexCenter(space-between, flex-start, column);
-    }
-  }
-
   &__form {
+    @include flexCenter(flex-start, flex-start, column);
     min-width: 350px;
     margin-top: $spacer*1.5;
+    margin-bottom: $spacer*2;
 
-
-    &__label {
+    &__journey-name {
+      font-weight: 700;
       margin-bottom: 4px;
+
+      &__input {
+        width: 350px;
+      }
     }
 
-    &__input {
-      padding: 6px;
-      background-color: $inactive;
-      border: 1px solid $text;
-      border-radius: 3px;
-      width: 230px;
-      font-size: 0.9rem;
-      font-family: 'Raleway', sans-serif;
-
-    }
-
-    &__icon {
-      border: 1px solid $text;
-      border-radius: 8px;
-      width: 60px;
-      height: 60px;
-      @include flexCenter(center, center, column);
-    }
   }
 }

@@ -52,9 +52,25 @@ button {
   } 
 }
 
+input, select {
+  padding: 6px;
+  background-color: vars.$input;
+  border: 1px solid vars.$text;
+  border-radius: 3px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: calc(vars.$spacer/2);
+}
+
 .main-title {
   font-size: 1.25rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: calc(vars.$spacer/2);
+}
+
+.caption {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  text-align: center;
 }
