@@ -6,7 +6,7 @@
   flex-direction: column;
   min-height: 100%;
   color: $text;
-  padding: $spacer;
+  padding: $spacer calc($spacer/2);
   background: linear-gradient(179.97deg, $background 1.48%, $background-light 118.64%);
 }
 

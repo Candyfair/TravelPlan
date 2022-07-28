@@ -19,6 +19,10 @@ const Home = () => {
     navigate('/schedule');
   };
 
+  const handleClick = () => {
+    navigate('/create');
+  };
+
   return (
     <div className="home">
 
@@ -32,6 +36,9 @@ const Home = () => {
         <li onClick={handleScotJourney}>Scottish Highlands Super Trip</li>
         <li onClick={handleEuropeJourney}>Europe Inter-Rail Fab Trip</li>
       </ul>
+
+      <h2 className="home__subtitle">Create a new journey</h2>
+      <button className="button" onClick={handleClick} type="button">Add a trip</button>
 
     </div>
   );

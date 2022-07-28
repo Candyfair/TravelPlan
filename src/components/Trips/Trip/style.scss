@@ -6,6 +6,7 @@
   margin-bottom: $spacer;
   min-width: 350px;
   max-width: 450px;
+  border-radius: 8px;
 
   &__frame {
     @include flexCenter(space-between, center, column);
@@ -13,7 +14,7 @@
     height: 80px;
     border: solid $frame 1px;
     border-radius: 8px;
-    padding: calc($spacer/2);
+    padding: 4px;
     flex: 1;
 
     &__date {
@@ -41,9 +42,10 @@
 
   &__middle {
     @include flexCenter(space-between, flex-start, row);
-    margin-left: calc($spacer/2);
-    margin-right: calc($spacer/2);
+    margin-left: 2px;
+    margin-right: 2px;
     flex: 1;
+    max-width: 174px;
 
     &__timetable {
       @include flexCenter(space-between, center, column);
@@ -94,5 +96,4 @@
 // Date in the past
 .inactive {
   background-color: $inactive;
-  border-radius: 8px;
 }

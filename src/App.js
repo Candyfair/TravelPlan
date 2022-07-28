@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import {
   Home,
   Schedule,
+  Create,
 } from './pages';
 
 import dataEurope from './data/europeJourney';
@@ -37,9 +38,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/schedule" element={<Schedule destination={journeyName} details={journeyDetails} />} />
+          <Route path="/create" element={<Create />} exact />
 
           {/* Route for sharing static data */}
           <Route path="/europe-journey" element={<Schedule destination={journeyNameEurope} details={journeyDetailsEurope} />} />
+
         </Routes>
       </Layout>
     </div>

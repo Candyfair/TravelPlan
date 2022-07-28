@@ -15,7 +15,7 @@ const Schedule = ({ destination, details }) => {
   return (
     <>
       <div className="content__header">
-        <h1 className="content__header__title">{destination}</h1>
+        <h1 className="main-title">{destination}</h1>
         <h2 className="content__header__subtitle">{moment(startDate).format('Do MMMM')} - {moment(endDate).format('Do MMMM YYYY')}</h2>
       </div>
 
@@ -23,7 +23,7 @@ const Schedule = ({ destination, details }) => {
 
     </>
   );
-}
+};
 
 Schedule.propTypes = {
   destination: PropTypes.string.isRequired,
