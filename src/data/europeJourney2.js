@@ -6,7 +6,7 @@ export default {
       dateDeparture: '15/08/2022',
       timeDeparture: '09:55',
       dateArrival: '15/08/2022',
-      timeArrival: '16:30',
+      timeArrival: '13:16',
       travelType: 'fasttrain',
       travelName: 'Thalys',
       placeDeparture: 'Paris',
