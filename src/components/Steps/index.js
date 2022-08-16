@@ -27,21 +27,4 @@ Steps.propTypes = {
   steps: PropTypes.array.isRequired,
 };
 
-// Steps.propTypes = {
-//   steps: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       dateDeparture: PropTypes.string.isRequired,
-//       timeDeparture: PropTypes.string.isRequired,
-//       dateArrival: PropTypes.string.isRequired,
-//       timeArrival: PropTypes.string.isRequired,
-//       travelType: PropTypes.string.isRequired,
-//       travelName: PropTypes.string.isRequired,
-//       placeDeparture: PropTypes.string.isRequired,
-//       placeArrival: PropTypes.string.isRequired,
-//       details: PropTypes.string.isRequired,
-//     }),
-//   ).isRequired,
-// };
-
 export default Steps;

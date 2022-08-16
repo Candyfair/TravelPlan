@@ -8,6 +8,7 @@ import * as CONSTANTS from '../../../utils/constants';
 
 const Step = ({
   id,
+  travelName,
   startDate,
   startTime,
   endDate,
@@ -18,7 +19,6 @@ const Step = ({
   // position,
   type,
 }) => {
-  console.log(`id: ${id}, pointDeparture: ${pointDeparture}`);
   console.log('Je suis dans le composant Step');
 
   // Show transport icon
@@ -84,17 +84,17 @@ const Step = ({
         <div className={`trip__frame${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
           <p className="trip__frame__date">{moment(departureDate).format('DD MMM')}</p>
 
-          <div className="trip__frame__transport">
-            <Icon icon={stepType} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
-            {/* <p className="trip__frame__transport__name">{travelName}</p> */}
-          </div>
+          {/* <div className="trip__frame__transport"> */}
+          <Icon icon={stepType} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+          <p className="trip__frame__transport__name">{travelName}</p>
+          {/* </div> */}
         </div>
 
         {/* Middle part */}
         <div className={`trip__middle${stepType === 'hotel' ? ' hide' : ''}`}>
 
           <div className="trip__middle__timetable">
-            <p className="trip__middle__time">{startTime}</p>
+            <p className="trip__middle__time">{moment(startTime, 'HH:mm:ss').format('HH:mm')}</p>
             <p className="trip__middle__city">{pointDeparture}</p>
           </div>
 
@@ -107,7 +107,7 @@ const Step = ({
           </div>
 
           <div className="trip__middle__timetable">
-            <p className="trip__middle__time">{endTime}</p>
+            <p className="trip__middle__time">{moment(endTime, 'HH:mm:ss').format('HH:mm')}</p>
             <p className="trip__middle__city">{pointArrival}</p>
           </div>
         </div>
@@ -131,6 +131,7 @@ const Step = ({
 Step.propTypes = {
   id: PropTypes.number.isRequired,
   // position: PropTypes.number.isRequired,
+  travelName: PropTypes.string.isRequired,
   type: PropTypes.object.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,

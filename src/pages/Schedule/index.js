@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
+import moment from 'moment';
 
 import { receivedTrip } from '../../redux/actions/trips';
 
@@ -26,24 +27,29 @@ const Schedule = () => {
   }, []);
 
   const trip = useSelector((state) => state.trips.selectedTrip);
-  // console.log(JSON.stringify(trip));
-
-  // const firstDate = trip[0].dateDeparture;
-  // const lastDate = trip[trip.length - 1].dateArrival;
-
-  // const startDate = moment(firstDate, 'DD-MM-AAAA');
-  // const endDate = moment(lastDate, 'DD-MM-AAAA');
 
   console.log('Je suis dans le composant Schedule');
 
-  return (
+  // Get trip's period
+  const { steps } = trip;
+  let firstDate = '';
+  let lastDate = '';
+
+  if (steps) {
+    firstDate = steps[0].startDate;
+    lastDate = steps[steps.length - 1].endDate;
+  }
+
+  return !trip && !steps ? null : (
     <>
       <div className="content__header">
         <h1 className="main-title">{trip.tripName}</h1>
+        {
+          firstDate !== lastDate
+            ? <h2 className="content__header__subtitle">{moment(firstDate).format('Do MMMM')} - {moment(lastDate).format('Do MMMM YYYY')}</h2>
+            : <h2 className="content__header__subtitle">{moment(lastDate).format('Do MMMM YYYY')}</h2>
 
-        {/* <div>Texte: {firstDate}, {lastDate} </div> */}
-
-        {/* <h2 className="content__header__subtitle">{moment(startDate).format('Do MMMM')} - {moment(endDate).format('Do MMMM YYYY')}</h2> */}
+        }
       </div>
 
       {
