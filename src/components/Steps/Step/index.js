@@ -6,7 +6,7 @@ import './style.scss';
 import Icon from '../../Icon';
 import * as CONSTANTS from '../../../utils/constants';
 
-const Trip = ({
+const Step = ({
   id,
   dateDeparture,
   timeDeparture,
@@ -121,7 +121,7 @@ const Trip = ({
   );
 };
 
-Trip.propTypes = {
+Step.propTypes = {
   id: PropTypes.number.isRequired,
   dateDeparture: PropTypes.string.isRequired,
   dateArrival: PropTypes.string.isRequired,
@@ -134,4 +134,4 @@ Trip.propTypes = {
   details: PropTypes.string.isRequired,
 };
 
-export default Trip;
+export default Step;
