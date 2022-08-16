@@ -1,10 +1,9 @@
-import { FETCH_TRIPS, RECEIVED_STEPS, RECEIVED_TRIP, RECEIVED_TRIPS } from '../actions/trips';
+import { FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS } from '../actions/trips';
 
 export const initialState = {
   loading: false,
   list: [],
   selectedTrip: [],
-  selectedSteps: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -26,12 +25,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         selectedTrip: action.payload,
-      };
-
-    case RECEIVED_STEPS:
-      return {
-        ...state,
-        selectedSteps: action.payload,
       };
 
     default:
