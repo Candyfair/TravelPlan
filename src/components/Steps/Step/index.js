@@ -73,8 +73,8 @@ const Step = ({
   }
 
   // Convert dates
-  const departureDate = moment(startDate, 'DD-MM-AAAA');
-  const arrivalDate = moment(endDate, 'DD-MM-AAAA');
+  const departureDate = moment(startDate, 'AAAA-MM-DD');
+  const arrivalDate = moment(endDate, 'AAAA-MM-DD');
   const nbNights = arrivalDate.diff(departureDate, 'days');
 
   return (
@@ -82,7 +82,7 @@ const Step = ({
       <div className="trip" key={id}>
         {/* First frame */}
         <div className={`trip__frame${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
-          <p className="trip__frame__date">{moment(departureDate).format('DD MMM')}</p>
+          <p className="trip__frame__date">{moment(departureDate).format('DD MMM', true)}</p>
 
           {/* <div className="trip__frame__transport"> */}
           <Icon icon={stepType} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
@@ -91,7 +91,7 @@ const Step = ({
         </div>
 
         {/* Middle part */}
-        <div className={`trip__middle${stepType === 'hotel' ? ' hide' : ''}`}>
+        <div className={`trip__middle${type.code === 'hotel' ? ' hide' : ''}`}>
 
           <div className="trip__middle__timetable">
             <p className="trip__middle__time">{moment(startTime, 'HH:mm:ss').format('HH:mm')}</p>
@@ -113,7 +113,7 @@ const Step = ({
         </div>
 
         {/* Case: hotel */}
-        <div className={`trip__middle${stepType === 'hotel' ? ' center' : ' hide'}`}>
+        <div className={`trip__middle${type.code === 'hotel' ? ' center' : ' hide'}`}>
           <p className="trip__middle__stay-label">{nbNights} night{nbNights > 1 ? 's' : ''} in</p>
           <p className={`trip__middle__stay${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>{pointDeparture}</p>
         </div>
