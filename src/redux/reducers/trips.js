@@ -1,6 +1,6 @@
 import { FETCH_TRIPS, RECEIVED_TRIPS } from '../actions/trips';
 
-export const initialState = {
+const initialState = {
   loading: false,
   list: [],
 };
@@ -17,7 +17,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         list: action.payload,
-        loading: false,
       };
 
     default:

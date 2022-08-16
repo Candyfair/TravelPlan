@@ -13,6 +13,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     logMiddleware,
     ajaxMiddleware,
+    // secondMiddleware,
   ),
 );
 
