@@ -1,9 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setDestination, setJourney } from '../../redux/actions/journey';
 import './style.scss';
 
 const Home = () => {
+  // Data from API
+  const trips = useSelector((state) => state.trips.list);
+  // console.log(trips, trips.map);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,8 +37,16 @@ const Home = () => {
 
       <h2 className="home__subtitle">Select your journey</h2>
       <ul className="home__destinations">
-        <li onClick={handleScotJourney}>Scottish Highlands Super Trip</li>
-        <li onClick={handleEuropeJourney}>Europe Inter-Rail Fab Trip</li>
+        {
+          trips.map((trip) => (
+            <li
+              key={trips.id}
+            >
+              {trip.tripName}
+            </li>
+          ))
+        }
+
       </ul>
 
       <h2 className="home__subtitle">Create a new journey</h2>
@@ -45,3 +57,15 @@ const Home = () => {
 };
 
 export default Home;
+
+// {
+//   recipes.map((recipe) => (
+//     <NavLink
+//       key={recipe.id}
+//       className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+//       to={`/recipe/${recipe.slug}`}
+//     >
+//       {recipe.title}
+//     </NavLink>
+//   ))
+// }

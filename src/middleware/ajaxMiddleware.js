@@ -2,7 +2,6 @@ import axios from 'axios';
 import { FETCH_TRIPS, receivedTrips } from '../redux/actions/trips';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
-console.log(`baseURL: ${baseURL}`);
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

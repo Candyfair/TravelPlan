@@ -40,13 +40,13 @@
 
     & li {
       list-style-type: disc;
-      cursor: pointer;
       margin-bottom: calc($spacer/2);
-      text-decoration: underline;
+      // cursor: pointer;
+      // text-decoration: underline;
 
-      &:hover {
-        text-decoration: none;
-      }
+      // &:hover {
+      //   text-decoration: none;
+      // }
     }
   }
 }

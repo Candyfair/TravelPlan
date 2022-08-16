@@ -1,5 +1,5 @@
 // == Import
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -14,30 +14,21 @@ import {
   Create,
 } from './pages';
 
-// Import data from API/JSON
+// API actions
 import { fetchTrips } from './redux/actions/trips';
-import dataEurope from './data/europeJourney';
-import dataScotland from './data/scottishJourney';
 
 // Static data for sharing link
 import dataEuropeStatic from './data/europeJourney2';
 
 // == Composant
 const App = () => {
-  // API call
   const dispatch = useDispatch();
 
+  // API call
   useEffect(() => {
-    // console.log('Je vais chercher les voyages');
     const action = fetchTrips();
     dispatch(action);
   }, []);
-
-  // Pick up destination from redux state
-  const { destination } = useSelector((state) => state.journey);
-  const data = destination === 'Scotland' ? dataScotland : dataEurope;
-
-  const { journeyName, journeyDetails } = data;
 
   // Static data for sharing link
   const { journeyNameEurope, journeyDetailsEurope } = dataEuropeStatic;
@@ -48,7 +39,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} exact />
-          <Route path="/schedule" element={<Schedule destination={journeyName} details={journeyDetails} />} />
+          <Route path="/schedule/:id" element={<Schedule />} />
           <Route path="/create" element={<Create />} exact />
 
           {/* Route for sharing static data */}
