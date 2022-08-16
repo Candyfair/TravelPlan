@@ -39,7 +39,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} exact />
-          <Route path="/schedule/:id" element={<Schedule />} />
+          <Route path="/schedule/:id/:slug" element={<Schedule />} />
           <Route path="/create" element={<Create />} exact />
 
           {/* Route for sharing static data */}
