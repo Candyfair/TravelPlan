@@ -26,15 +26,15 @@ const Schedule = () => {
   }, []);
 
   const trip = useSelector((state) => state.trips.selectedTrip);
-  console.log(JSON.stringify(trip));
+  // console.log(JSON.stringify(trip));
 
   // const firstDate = trip[0].dateDeparture;
   // const lastDate = trip[trip.length - 1].dateArrival;
 
-
-
   // const startDate = moment(firstDate, 'DD-MM-AAAA');
   // const endDate = moment(lastDate, 'DD-MM-AAAA');
+
+  console.log('Je suis dans le composant Schedule');
 
   return (
     <>
@@ -46,7 +46,9 @@ const Schedule = () => {
         {/* <h2 className="content__header__subtitle">{moment(startDate).format('Do MMMM')} - {moment(endDate).format('Do MMMM YYYY')}</h2> */}
       </div>
 
-      <Steps />
+      {
+        trip && <Steps steps={trip.steps} />
+      }
 
     </>
   );

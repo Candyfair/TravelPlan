@@ -1,44 +1,31 @@
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-
-import { receivedSteps } from '../../redux/actions/trips';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
 import Step from './Step';
 
-const Steps = () => {
-  // const dispatch = useDispatch();
-  // const baseURL = process.env.REACT_APP_BASE_URL;
-  // const { id } = useParams();
+const Steps = ({ steps }) => {
+  console.log('Je suis dans le composant Steps');
 
-  // useEffect(() => {
-  //   axios.get(`${baseURL}/trips/${id}`)
-  //     .then((res) => {
-  //       const steps = receivedSteps(res.data);
-  //       dispatch(steps);
-  //     });
-  // }, []);
+  return !steps ? null : (
+    <div>
+      {
+        steps && steps.map((step) => (
+          <Step
+            key={step.id}
+            {...step}
+          />
+        ))
+      }
 
-  const steps = useSelector((state) => state.trips.selectedSteps);
-
-  console.log(`steps/trip: ${JSON.stringify(steps)}`);
-
-  return (
-
-    <>
-
-    </>
+    </div>
 
   );
 };
 
-// Steps.propTypes = {
-//   steps: PropTypes.array.isRequired,
-// };
+Steps.propTypes = {
+  steps: PropTypes.array.isRequired,
+};
 
 // Steps.propTypes = {
 //   steps: PropTypes.arrayOf(
