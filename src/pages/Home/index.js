@@ -1,9 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setDestination, setJourney } from '../../redux/actions/journey';
 import './style.scss';
 
 const Home = () => {
+  // Data from API
+  const trips = useSelector((state) => state.trips.list);
+  console.log(trips, trips.map);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
