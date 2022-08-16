@@ -10,6 +10,8 @@ import { receivedTrip } from '../../redux/actions/trips';
 import './style.scss';
 
 import Steps from '../../components/Steps';
+import Icon from '../../components/Icon';
+import * as CONSTANTS from '../../utils/constants';
 
 // import moment from 'moment';
 
@@ -55,6 +57,10 @@ const Schedule = () => {
       {
         trip && <Steps steps={trip.steps} />
       }
+
+      <button type="button" className="content__addstep">
+        <Icon icon={CONSTANTS.ICONS.plus} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+      </button>
 
     </>
   );
