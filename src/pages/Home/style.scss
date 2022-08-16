@@ -42,9 +42,10 @@
       list-style-type: disc;
       cursor: pointer;
       margin-bottom: calc($spacer/2);
+      text-decoration: underline;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
       }
     }
   }

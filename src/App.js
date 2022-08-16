@@ -1,6 +1,7 @@
 // == Import
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import './styles/index.scss';
 
@@ -13,6 +14,8 @@ import {
   Create,
 } from './pages';
 
+// Import data from API/JSON
+import { fetchTrips } from './redux/actions/trips';
 import dataEurope from './data/europeJourney';
 import dataScotland from './data/scottishJourney';
 
@@ -21,12 +24,20 @@ import dataEuropeStatic from './data/europeJourney2';
 
 // == Composant
 const App = () => {
-  // Pick up destination from State
+  // API call
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // console.log('Je vais chercher les voyages');
+    const action = fetchTrips();
+    dispatch(action);
+  }, []);
+
+  // Pick up destination from redux state
   const { destination } = useSelector((state) => state.journey);
   const data = destination === 'Scotland' ? dataScotland : dataEurope;
 
   const { journeyName, journeyDetails } = data;
-  console.log(`APP / journeyName: ${journeyName}`);
 
   // Static data for sharing link
   const { journeyNameEurope, journeyDetailsEurope } = dataEuropeStatic;
