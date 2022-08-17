@@ -1,30 +1,23 @@
-import { FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS } from '../actions/trips';
+import { FETCH_USERS_TRIPS, RECEIVED_USERS_TRIPS } from '../actions/users';
 
 export const initialState = {
   loading: false,
-  list: [],
-  selectedTrip: [],
+  usersList: [],
+  user: 1,
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case FETCH_TRIPS:
+    case FETCH_USERS_TRIPS:
       return {
         ...state,
         loading: true,
       };
 
-    case RECEIVED_TRIPS:
+    case RECEIVED_USERS_TRIPS:
       return {
         ...state,
-        list: action.payload,
-        loading: false,
-      };
-
-    case RECEIVED_TRIP:
-      return {
-        ...state,
-        selectedTrip: action.payload,
+        usersList: action.payload,
         loading: false,
       };
 

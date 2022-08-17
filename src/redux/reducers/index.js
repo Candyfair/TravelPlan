@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import journey from './journey';
+import steps from './steps';
 import create from './create';
 import trips from './trips';
+import users from './users';
 
 export default combineReducers({
-  journey,
+  steps,
   create,
   trips,
+  users,
 });

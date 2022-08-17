@@ -42,14 +42,14 @@ const Schedule = () => {
   const ShowTripDates = () => {
     return (
       firstDate !== lastDate
-        ? <h2 className="content__header__subtitle">{moment(firstDate).format('Do MMMM')} - {moment(lastDate).format('Do MMMM YYYY')}</h2>
-        : <h2 className="content__header__subtitle">{moment(lastDate).format('Do MMMM YYYY')}</h2>
+        ? <h2 className="subtitle">{moment(firstDate).format('Do MMMM')} - {moment(lastDate).format('Do MMMM YYYY')}</h2>
+        : <h2 className="subtitle">{moment(lastDate).format('Do MMMM YYYY')}</h2>
     );
   };
 
   const ShowAddStep = () => {
     return (
-      <h2>Please add a step to your trip by clicking on the button below!</h2>
+      <h2 className="subtitle">Now add a step to your trip by clicking on the button below!</h2>
     );
   };
 

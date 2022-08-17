@@ -69,6 +69,10 @@ input, select {
   margin-bottom: calc(vars.$spacer/2);
 }
 
+.subtitle {
+  text-align: center;
+  font-size: 1rem;
+}
 .caption {
   font-size: 0.7rem;
   text-transform: uppercase;

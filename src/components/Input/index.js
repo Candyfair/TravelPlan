@@ -20,6 +20,7 @@ const Input = ({ inputName, className }) => {
 
 Input.propTypes = {
   inputName: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default Input;
