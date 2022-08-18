@@ -44,8 +44,8 @@ const Step = ({
       stepType = CONSTANTS.ICONS.car;
       break;
 
-    case 'metro':
-      stepType = CONSTANTS.ICONS.metro;
+    case 'other':
+      stepType = CONSTANTS.ICONS.other;
       break;
 
     case 'hotel':

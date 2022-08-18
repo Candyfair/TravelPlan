@@ -1,7 +1,7 @@
 import { CHANGE_VALUE, SET_ICON } from '../actions/create';
 
 const initialState = {
-  icon: 'suspension', // A déplacer dans steps.js
+  icon: 'suspension',
   id: '',
   tripName: '',
   slug: '',

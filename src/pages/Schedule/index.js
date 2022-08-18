@@ -8,6 +8,8 @@ import axios from 'axios';
 import moment from 'moment';
 
 import { receivedTrip } from '../../redux/actions/trips';
+import { changeValue } from '../../redux/actions/create';
+import { setModal } from '../../redux/actions/modals';
 
 import './style.scss';
 
@@ -15,14 +17,20 @@ import Steps from '../../components/Steps';
 import Icon from '../../components/Icon';
 import * as CONSTANTS from '../../utils/constants';
 
+
 // == Component
 const Schedule = () => {
   const dispatch = useDispatch();
   const baseURL = process.env.REACT_APP_BASE_URL;
   const { id } = useParams();
 
-  // API call
   useEffect(() => {
+    // Empty Create state
+    dispatch(changeValue('tripName', ''));
+    dispatch(changeValue('slug', ''));
+    dispatch(changeValue('position', ''));
+
+    // API call
     axios.get(`${baseURL}/trips/${id}`)
       .then((res) => {
         const trip = receivedTrip(res.data);
@@ -53,6 +61,12 @@ const Schedule = () => {
     );
   };
 
+  // Open Step modal
+  const handleOpenModal = () => {
+    dispatch(setModal(true, 'step'));
+  };
+
+  // Choice of subtitle
   let caption;
 
   if (steps && steps.length > 0) {
@@ -76,7 +90,11 @@ const Schedule = () => {
         trip && steps && <Steps steps={trip.steps} />
       }
 
-      <button type="button" className="content__addstep">
+      <button
+        type="button"
+        className="content__addstep"
+        onClick={handleOpenModal}
+      >
         <Icon icon={CONSTANTS.ICONS.plus} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
       </button>
 

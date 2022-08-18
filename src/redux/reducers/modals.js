@@ -1,7 +1,7 @@
 import { SET_MODAL } from '../actions/modals';
 
 const initialState = {
-  modal: true,
+  modal: false,
   element: 'step',
 };
 

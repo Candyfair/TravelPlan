@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import CreateStep from '../../CreateStep';
 
 import './style.scss';
 
@@ -9,7 +10,8 @@ const ModalStep = () => {
 
   return (
     <section className="addstep-modal">
-      ModalStep
+      <h1 className="modal-title">Add a new step to your trip</h1>
+      <CreateStep />
     </section>
   );
 };
