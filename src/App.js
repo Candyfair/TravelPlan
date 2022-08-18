@@ -20,6 +20,7 @@ import { fetchTrips } from './redux/actions/trips';
 // Static data for sharing link
 import dataEuropeStatic from './data/europeJourney2';
 import { fetchUsersTrips } from './redux/actions/users';
+import ModalDisplay from './components/ModalDisplay';
 
 // == Composant
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/europe-journey" element={<Schedule destination={journeyNameEurope} details={journeyDetailsEurope} />} />
 
         </Routes>
+        <ModalDisplay />
       </Layout>
     </div>
   );
