@@ -1,11 +1,11 @@
 import { CHANGE_VALUE, SET_ICON } from '../actions/create';
 
 const initialState = {
-  icon: 'suspension',
+  icon: 'suspension', // A déplacer dans steps.js
   tripName: '',
   slug: '',
-  user: null,
-  position: 0,
+  user: '',
+  position: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

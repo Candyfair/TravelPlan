@@ -4,7 +4,7 @@ import './style.scss';
 
 // import CreateTrip from 'src/components/CreateTrip';
 import Input from 'src/components/Input';
-import { changeValue } from '../../redux/actions/create';
+import { addTrip, changeValue } from '../../redux/actions/create';
 import { slugify } from '../../utils/utils';
 
 // == Composant
@@ -29,13 +29,14 @@ const Create = () => {
     e.preventDefault();
     const newSlug = slugify(tripName);
 
+    // Update state
     dispatch(changeValue('slug', newSlug));
     dispatch(changeValue('user', user));
     dispatch(changeValue('position', newPosition));
 
-    console.log(user, tripName, newSlug, newPosition);
-
-
+    if (tripName !== '') {
+      dispatch(addTrip());
+    }
   };
 
   const handleSubmit = (e) => {
