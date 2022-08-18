@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import './style.scss';
 
@@ -10,13 +12,15 @@ import { slugify } from '../../utils/utils';
 // == Composant
 const Create = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Get state
-  const { tripName } = useSelector((state) => state.create);
+  const { tripName, id, slug } = useSelector((state) => state.create);
   const { user, usersList } = useSelector((state) => state.users);
 
   // Get position for new trip
-  let lastPosition = 0;
+  let lastPosition = '';
+  // let lastID = '';
   usersList.forEach((object) => {
     if (object.id === user) {
       lastPosition = object.trips.length;
@@ -34,10 +38,18 @@ const Create = () => {
     dispatch(changeValue('user', user));
     dispatch(changeValue('position', newPosition));
 
+    // Send state data to API
     if (tripName !== '') {
       dispatch(addTrip());
     }
   };
+
+  // Wait until the new id is sent to state to redirect to new trip's page
+  useEffect(() => {
+    if (id !== '') {
+      navigate(`/schedule/${id}/${slug}`);
+    }
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

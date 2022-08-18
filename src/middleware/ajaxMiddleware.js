@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 import api from './api';
 
-import { ADD_TRIP } from '../redux/actions/create';
+import { ADD_TRIP, changeValue } from '../redux/actions/create';
 import { FETCH_TRIPS, receivedTrips, setLoading } from '../redux/actions/trips';
 import { FETCH_USERS_TRIPS, receivedUsersTrips } from '../redux/actions/users';
 
@@ -56,7 +56,8 @@ export default (store) => (next) => (action) => {
       api.post('/trips', newTrip)
         .then(
           (res) => {
-            console.log('New trip added:', res.data);
+            console.log('New trip added:', res.data, 'id:', res.data.id);
+            store.dispatch(changeValue('id', res.data.id));
           },
         )
         .catch((err) => {
