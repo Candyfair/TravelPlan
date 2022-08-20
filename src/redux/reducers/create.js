@@ -5,7 +5,7 @@ const initialState = {
   tripName: '',
   slug: '',
   user: '',
-  tripPosition: '',
+  position: '',
   icon: 'suspension', // Add step
   travelName: '',
   departurePoint: '',

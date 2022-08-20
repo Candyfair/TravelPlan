@@ -144,7 +144,7 @@ const CreateStep = () => {
         <p className="step-caption">Ex:: Air France, Marriott Hotel, Thalys, etc</p>
 
         <Input
-          inputName="departurePoint"
+          inputName="travelName"
           className="create__form__input-long"
         />
       </div>
