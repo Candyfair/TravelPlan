@@ -1,5 +1,6 @@
 // == Imports
 import './style.scss';
+import Input from 'src/components/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setIcon } from '../../redux/actions/create';
@@ -22,11 +23,11 @@ const CreateStep = () => {
     { value: 'boat', text: 'Boat' },
     { value: 'bus', text: 'Bus' },
     { value: 'taxi', text: 'Taxi' },
-    { value: 'tramway', text: 'Tramway' },
-    { value: 'suspension', text: '---' },
+    { value: 'tramway', text: 'Metro / Tramway' },
+    { value: 'suspension2', text: '---' },
     { value: 'hotel', text: 'Hotel / B&B / Camping...' },
     { value: 'restaurant', text: 'Restaurant' },
-    { value: 'suspension', text: '---' },
+    { value: 'suspension3', text: '---' },
     { value: 'other', text: 'Other' },
   ];
 
@@ -34,51 +35,59 @@ const CreateStep = () => {
   let type = icon;
   switch (icon) {
     case 'suspension':
-      type = CONSTANTS.ICONS.suspension;
+      type = CONSTANTS.TRAVEL.suspension;
+      break;
+
+    case 'suspension2':
+      type = CONSTANTS.TRAVEL.suspension;
+      break;
+
+    case 'suspension3':
+      type = CONSTANTS.TRAVEL.suspension;
       break;
 
     case 'boat':
-      type = CONSTANTS.ICONS.boat;
+      type = CONSTANTS.TRAVEL.boat;
       break;
 
     case 'bus':
-      type = CONSTANTS.ICONS.bus;
+      type = CONSTANTS.TRAVEL.bus;
       break;
 
     case 'car':
-      type = CONSTANTS.ICONS.car;
+      type = CONSTANTS.TRAVEL.car;
       break;
 
     case 'fasttrain':
-      type = CONSTANTS.ICONS.fasttrain;
+      type = CONSTANTS.TRAVEL.fasttrain;
       break;
 
     case 'plane':
-      type = CONSTANTS.ICONS.plane;
+      type = CONSTANTS.TRAVEL.plane;
       break;
 
     case 'train':
-      type = CONSTANTS.ICONS.train;
+      type = CONSTANTS.TRAVEL.train;
       break;
 
     case 'taxi':
-      type = CONSTANTS.ICONS.taxi;
+      type = CONSTANTS.TRAVEL.taxi;
       break;
 
     case 'tramway':
-      type = CONSTANTS.ICONS.tramway;
+      type = CONSTANTS.TRAVEL.tramway;
       break;
 
     case 'hotel':
-      type = CONSTANTS.ICONS.hotel;
+      type = CONSTANTS.TRAVEL.hotel;
       break;
 
     case 'restaurant':
-      type = CONSTANTS.ICONS.restaurant;
+      type = CONSTANTS.TRAVEL.restaurant;
       break;
 
     case 'other':
-      type = CONSTANTS.ICONS.other;
+      type = CONSTANTS.TRAVEL.other;
       break;
 
     default:
@@ -91,12 +100,15 @@ const CreateStep = () => {
   };
   return (
     <form>
-      {/* Type of transport / hotel */}
+      {/* TRANSPORT TYPE */}
       <div className="create__wrapper__transport-type-form">
 
         {/* Icon */}
         <div className="create__form__icon">
-          <Icon icon={type} size={24} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+          {
+            icon
+            && <Icon icon={type} size={24} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+          }
         </div>
 
         <div className="create__wrapper__transport-type-input">
@@ -123,6 +135,113 @@ const CreateStep = () => {
         </div>
 
       </div>
+
+      {/* NAME OF TRANSPORT */}
+      <div className="create__wrapper__input">
+        <p className="create__form__label">
+          Give a name to this transport / stay:
+        </p>
+        <p className="step-caption">Ex:: Air France, Marriott Hotel, Thalys, etc</p>
+
+        <Input
+          inputName="departurePoint"
+          className="create__form__input-long"
+        />
+      </div>
+
+      {/* POINT OF DEPARTURE */}
+      <div className="create__wrapper__input">
+        <p className="create__form__label">
+          {
+            (icon === 'hotel' || icon === 'restaurant')
+              ? 'Staying in:'
+              : 'Leaving from:'
+          }
+        </p>
+
+        <Input
+          inputName="departurePoint"
+          className="create__form__input-long"
+        />
+      </div>
+
+      {/* POINT OF ARRIVAL */}
+      {
+        (icon !== 'hotel' && icon !== 'restaurant')
+        && (
+          <div className="create__wrapper__input">
+            <p className="create__form__label">
+              Going to:
+            </p>
+
+            <Input
+              inputName="arrivalPoint"
+              className="create__form__input-long"
+            />
+          </div>
+        )
+      }
+
+
+      <div className="create__wrapper__join">
+        {/* START DATE */}
+
+        <div className="create__wrapper__input">
+          <p className="create__form__label">
+            {
+              (icon === 'hotel' || icon === 'restaurant')
+                ? 'Booking day:'
+                : 'Departure date:'
+            }
+          </p>
+
+          <div className="create__wrapper__input__wrapper">
+            <Input
+              inputName="startDate"
+              className="create__form__input-short"
+            />
+
+            <span className="create__wrapper__input__calendar">
+              <Icon
+                icon={CONSTANTS.ICONS.calendar}
+                size={24}
+                viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+              />
+            </span>
+          </div>
+        </div>
+
+        {/* END DATE */}
+        <div className="create__wrapper__input">
+          <p className="create__form__label">
+            Arrival Date:
+          </p>
+
+          <div className="create__wrapper__input__wrapper">
+            <Input
+              inputName="endDate"
+              className="create__form__input-short"
+            />
+
+            <span className="create__wrapper__input__calendar">
+              <Icon
+                icon={CONSTANTS.ICONS.calendar}
+                size={24}
+                viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+              />
+            </span>
+          </div>
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+
     </form>
   );
 };

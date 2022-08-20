@@ -8,11 +8,27 @@
     &__transport-type-form {
       @include flexCenter(space-between, flex-start, row);
       width: 100%;
+      margin-bottom: $spacer
+    }
 
+    &__join {
+      @include flexCenter(space-between, flex-start, row);
     }
 
     &__transport-type-input {
-      @include flexCenter(center, center, column);
+      @include flexCenter(flex-start, flex-start, column);
+    }
+
+    &__input {
+
+      &__wrapper {
+        @include flexCenter(flex-start, flex-start, row);
+      }
+
+      &__calendar {
+        cursor: pointer;
+        margin-top: 2px;
+      }
     }
   }
 
@@ -29,6 +45,15 @@
       height: 60px;
       @include flexCenter(center, center, column);
       margin-right: 10px;
+    }
+
+    &__input-short {
+      width: 110px;
+      margin-right: 2px;
+    }
+
+    &__input-long {
+      width: 100%;
     }
   }
 }

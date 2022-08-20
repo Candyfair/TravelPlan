@@ -36,7 +36,7 @@ const Create = () => {
     // Update state
     dispatch(changeValue('slug', newSlug));
     dispatch(changeValue('user', user));
-    dispatch(changeValue('position', newPosition));
+    dispatch(changeValue('tripPosition', newPosition));
 
     // Send state data to API
     if (tripName !== '') {
