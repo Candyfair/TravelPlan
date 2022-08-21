@@ -4,6 +4,7 @@
 .create {
 
   &__wrapper {
+    @include flexCenter(center, center, column);
 
     &__transport-type-form {
       @include flexCenter(space-between, flex-start, row);
@@ -57,7 +58,7 @@
     }
 
     &__button {
-      // CENTER LE BOUTON
+      margin-top: calc($spacer/2);
     }
   }
 }

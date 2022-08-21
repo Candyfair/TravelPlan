@@ -100,213 +100,223 @@ const CreateStep = () => {
   };
   return (
     <form className="create__wrapper">
-      {/* TRANSPORT TYPE */}
-      <div className="create__wrapper__transport-type-form">
+      <div>
 
-        {/* Icon */}
-        <div className="create__form__icon">
-          {
-            icon
-            && <Icon icon={type} size={24} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
-          }
-        </div>
+        {/* TRANSPORT TYPE */}
+        <div className="create__wrapper__transport-type-form">
 
-        <div className="create__wrapper__transport-type-input">
-          {/* label */}
-          <p className="create__form__label">
-            Type of transport / stay:
-          </p>
-
-          {/* Drop-down input */}
-          <div>
-            <select
-              value={icon}
-              onChange={handleIconChange}
-            >
-              {
-                options.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.text}
-                  </option>
-                ))
-              }
-            </select>
+          {/* Icon */}
+          <div className="create__form__icon">
+            {
+              icon
+              && <Icon icon={type} size={24} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+            }
           </div>
-        </div>
 
-      </div>
-
-      {/* NAME OF TRANSPORT */}
-      <div className="create__wrapper__input">
-        <p className="create__form__label">
-          Give a name to this transport / stay:
-        </p>
-        <p className="step-caption">Ex: Air France, Marriott Hotel, Thalys...</p>
-
-        <Input
-          inputName="travelName"
-          className="create__form__input-long"
-        />
-      </div>
-
-      {/* POINT OF DEPARTURE */}
-      <div className="create__wrapper__input">
-        <p className="create__form__label">
-          {
-            (icon === 'hotel' || icon === 'restaurant')
-              ? 'City:'
-              : 'Leaving from:'
-          }
-        </p>
-
-        <Input
-          inputName="departurePoint"
-          className="create__form__input-long"
-        />
-      </div>
-
-      {/* POINT OF ARRIVAL */}
-      {
-        (icon !== 'hotel' && icon !== 'restaurant')
-        && (
-          <div className="create__wrapper__input">
+          <div className="create__wrapper__transport-type-input">
+            {/* label */}
             <p className="create__form__label">
-              Going to:
+              Type of transport / stay:
             </p>
 
-            <Input
-              inputName="arrivalPoint"
-              className="create__form__input-long"
-            />
+            {/* Drop-down input */}
+            <div>
+              <select
+                value={icon}
+                onChange={handleIconChange}
+              >
+                {
+                  options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.text}
+                    </option>
+                  ))
+                }
+              </select>
+            </div>
           </div>
-        )
-      }
 
+        </div>
 
-      <div className="create__wrapper__join">
-        {/* START DATE */}
+        {/* NAME OF TRANSPORT */}
+        <div className="create__wrapper__input">
+          <p className="create__form__label">
+            Give a name to this transport / stay:
+          </p>
+          <p className="step-caption">Ex: Air France, Marriott Hotel, Eurostar...</p>
 
+          <Input
+            inputName="travelName"
+            className="create__form__input-long"
+          />
+        </div>
+
+        {/* CITY OF DEPARTURE */}
         <div className="create__wrapper__input">
           <p className="create__form__label">
             {
               (icon === 'hotel' || icon === 'restaurant')
-                ? 'Booking day:'
-                : 'Departure date:'
+                ? 'City:'
+                : 'Leaving from:'
             }
           </p>
 
-          <div className="create__wrapper__input__wrapper">
-            <Input
-              inputName="startDate"
-              className="create__form__input-short"
-            />
-
-            <span className="create__wrapper__input__time-icon">
-              <Icon
-                icon={CONSTANTS.ICONS.calendar}
-                size={24}
-                viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
-              />
-            </span>
-          </div>
+          <Input
+            inputName="departurePoint"
+            className="create__form__input-long"
+          />
         </div>
 
-        {/* END DATE */}
+        {/* CITY OF ARRIVAL */}
         {
           (icon !== 'hotel' && icon !== 'restaurant')
           && (
             <div className="create__wrapper__input">
               <p className="create__form__label">
-                Arrival Date:
+                Going to:
               </p>
 
-              <div className="create__wrapper__input__wrapper">
-                <Input
-                  inputName="endDate"
-                  className="create__form__input-short"
-                />
-
-                <span className="create__wrapper__input__time-icon">
-                  <Icon
-                    icon={CONSTANTS.ICONS.calendar}
-                    size={24}
-                    viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
-                  />
-                </span>
-              </div>
+              <Input
+                inputName="arrivalPoint"
+                className="create__form__input-long"
+              />
             </div>
           )
         }
-      </div>
 
-      <div className="create__wrapper__join">
-        {/* START TIME */}
+        <div className="create__wrapper__join">
+          {/* START DATE */}
 
-        <div className="create__wrapper__input">
-          <p className="create__form__label">
-            {
-              (icon === 'hotel' || icon === 'restaurant')
-                ? 'Arrival time:'
-                : 'Departure time:'
-            }
-          </p>
+          <div className="create__wrapper__input">
+            <p className="create__form__label">
+              {
+                icon === 'hotel' && 'Check-in date:'
+              }
+              {
+                icon === 'restaurant' && 'Booking day:'
+              }
+              {
+                (icon !== 'hotel' && icon !== 'restaurant') && 'Departure date:'
+              }
+            </p>
 
-          <div className="create__wrapper__input__wrapper">
-            <Input
-              inputName="startTime"
-              className="create__form__input-short"
-            />
-
-            <span className="create__wrapper__input__time-icon">
-              <Icon
-                icon={CONSTANTS.ICONS.clock}
-                size={24}
-                viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+            <div className="create__wrapper__input__wrapper">
+              <Input
+                inputName="startDate"
+                className="create__form__input-short"
               />
-            </span>
+
+              <span className="create__wrapper__input__time-icon">
+                <Icon
+                  icon={CONSTANTS.ICONS.calendar}
+                  size={24}
+                  viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                />
+              </span>
+            </div>
           </div>
+
+          {/* END DATE */}
+          {
+            (icon !== 'restaurant')
+            && (
+              <div className="create__wrapper__input">
+                <p className="create__form__label">
+                  {
+                    icon !== 'hotel' && 'Arrival date:'
+                  }
+                  {
+                    icon === 'hotel' && 'Check-out date:'
+                  }
+                </p>
+
+                <div className="create__wrapper__input__wrapper">
+                  <Input
+                    inputName="endDate"
+                    className="create__form__input-short"
+                  />
+
+                  <span className="create__wrapper__input__time-icon">
+                    <Icon
+                      icon={CONSTANTS.ICONS.calendar}
+                      size={24}
+                      viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                    />
+                  </span>
+                </div>
+              </div>
+            )
+          }
         </div>
 
-        {/* END TIME */}
-        {
-          (icon !== 'hotel' && icon !== 'restaurant')
-          && (
-            <div className="create__wrapper__input">
-              <p className="create__form__label">
-                Arrival Time:
-              </p>
+        <div className="create__wrapper__join">
+          {/* START TIME */}
+          {
+            (icon !== 'hotel' && icon !== 'restaurant')
+            && (
+              <div className="create__wrapper__input">
+                <p className="create__form__label">
+                  Departure time
+                </p>
 
-              <div className="create__wrapper__input__wrapper">
-                <Input
-                  inputName="endTime"
-                  className="create__form__input-short"
-                />
-
-                <span className="create__wrapper__input__time-icon">
-                  <Icon
-                    icon={CONSTANTS.ICONS.clock}
-                    size={24}
-                    viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                <div className="create__wrapper__input__wrapper">
+                  <Input
+                    inputName="startTime"
+                    className="create__form__input-short"
                   />
-                </span>
+
+                  <span className="create__wrapper__input__time-icon">
+                    <Icon
+                      icon={CONSTANTS.ICONS.clock}
+                      size={24}
+                      viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                    />
+                  </span>
+                </div>
               </div>
-            </div>
-          )
-        }
-      </div>
+            )
+          }
+          {/* END TIME */}
+          {
+            (icon !== 'hotel' && icon !== 'restaurant')
+            && (
+              <div className="create__wrapper__input">
+                <p className="create__form__label">
+                  Arrival time
+                </p>
 
+                <div className="create__wrapper__input__wrapper">
+                  <Input
+                    inputName="endTime"
+                    className="create__form__input-short"
+                  />
 
-      {/* DETAILS */}
-      <div className="create__wrapper__input">
-        <p className="create__form__label">
-          Details (optional):
-        </p>
-        <p className="step-caption">Ex: Booking references, seat number...</p>
+                  <span className="create__wrapper__input__time-icon">
+                    <Icon
+                      icon={CONSTANTS.ICONS.clock}
+                      size={24}
+                      viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                    />
+                  </span>
+                </div>
+              </div>
+            )
+          }
+        </div>
 
-        <Input
-          inputName="details"
-          className="create__form__input-long"
-        />
+        {/* DETAILS */}
+        <div className="create__wrapper__input">
+          <p className="create__form__label">
+            Details (optional):
+          </p>
+          <p className="step-caption">Ex: Booking references, seat number...</p>
+
+          <Input
+            inputName="details"
+            className="create__form__input-long"
+          />
+        </div>
+
       </div>
 
       {/* BUTTON */}

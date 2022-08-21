@@ -103,7 +103,7 @@ const Step = ({
 
           <div className="trip__middle_arrows">
             <Icon
-              icon={CONSTANTS.TRAVEL.arrows}
+              icon={CONSTANTS.ICONS.arrows}
               size={22}
               viewbox={CONSTANTS.VIEWBOX.viewboxArrows}
             />
