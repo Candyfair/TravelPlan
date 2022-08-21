@@ -1,8 +1,8 @@
-export const SET_JOURNEY = 'SET_JOURNEY';
+export const SET_STEP = 'SET_JOURNEY';
 export const SET_DESTINATION = 'SET_DESTINATION';
 
-export const setJourney = (value) => ({
-  type: SET_JOURNEY,
+export const setStep = (value) => ({
+  type: SET_STEP,
   value,
 });
 

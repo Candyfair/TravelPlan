@@ -1,0 +1,12 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.header-modal {
+  flex: display;
+  justify-content: flex-end;
+
+  &__close {
+    cursor: pointer;
+    text-align: right;
+  }
+}

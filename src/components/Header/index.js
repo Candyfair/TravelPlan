@@ -2,7 +2,7 @@ import './style.scss';
 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setJourney } from '../../redux/actions/journey';
+import { setStep } from '../../redux/actions/steps';
 
 import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
@@ -12,7 +12,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleChangeDestination = () => {
-    dispatch(setJourney(false));
+    dispatch(setStep(false));
     navigate('/');
   };
 
@@ -27,6 +27,6 @@ const Header = () => {
       <Icon icon={CONSTANTS.ICONS.direction} size="22" viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
     </div>
   );
-}
+};
 
 export default Header;

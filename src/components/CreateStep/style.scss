@@ -1,0 +1,64 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.create {
+
+  &__wrapper {
+    @include flexCenter(center, center, column);
+
+    &__transport-type-form {
+      @include flexCenter(space-between, flex-start, row);
+      width: 100%;
+      margin-bottom: $spacer
+    }
+
+    &__join {
+      @include flexCenter(space-between, flex-start, row);
+    }
+
+    &__transport-type-input {
+      @include flexCenter(flex-start, flex-start, column);
+    }
+
+    &__input {
+
+      &__wrapper {
+        @include flexCenter(flex-start, flex-start, row);
+      }
+
+      &__time-icon {
+        cursor: pointer;
+        margin-top: 3px;
+      }
+    }
+  }
+
+  &__form {
+
+    &__label {
+      margin-bottom: 4px;
+    }
+
+    &__icon {
+      border: 1px solid $text;
+      border-radius: 8px;
+      width: 60px;
+      height: 60px;
+      @include flexCenter(center, center, column);
+      margin-right: 10px;
+    }
+
+    &__input-short {
+      width: 110px;
+      margin-right: 4px;
+    }
+
+    &__input-long {
+      width: 100%;
+    }
+
+    &__button {
+      margin-top: calc($spacer/2);
+    }
+  }
+}

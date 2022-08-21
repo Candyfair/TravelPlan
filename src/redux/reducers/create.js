@@ -1,8 +1,21 @@
 import { CHANGE_VALUE, SET_ICON } from '../actions/create';
 
 const initialState = {
-  icon: 'suspension',
-  journeyName: '',
+  id: '', // Add trip
+  tripName: '',
+  slug: '',
+  user: '',
+  position: '',
+  icon: 'suspension', // Add step
+  travelName: '',
+  departurePoint: '',
+  arrivalPoint: '',
+  startDate: '',
+  endDate: '',
+  startTime: '',
+  endTime: '',
+  details: '',
+  stepPosition: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
