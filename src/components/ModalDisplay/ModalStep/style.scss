@@ -1,0 +1,7 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.addstep-modal {
+  @include flexCenter(center, center, column);
+
+}

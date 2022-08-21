@@ -1,4 +1,4 @@
-import { SET_DESTINATION, SET_JOURNEY } from '../actions/journey';
+import { SET_DESTINATION, SET_STEP } from '../actions/steps';
 
 const initialState = {
   isSelected: false,
@@ -7,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_JOURNEY:
+    case SET_STEP:
       return {
         ...state,
         isSelected: action.value,

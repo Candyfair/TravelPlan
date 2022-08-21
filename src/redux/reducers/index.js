@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import journey from './journey';
+import steps from './steps';
 import create from './create';
 import trips from './trips';
+import users from './users';
+import modals from './modals';
 
 export default combineReducers({
-  journey,
+  steps,
   create,
   trips,
+  users,
+  modals,
 });

@@ -1,4 +1,4 @@
-import { FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS } from '../actions/trips';
+import { FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS, SET_LOADING } from '../actions/trips';
 
 export const initialState = {
   loading: false,
@@ -25,6 +25,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         selectedTrip: action.payload,
+        loading: false,
+      };
+
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
 
     default:
