@@ -2,6 +2,6 @@
 @import '../../../styles/mixins';
 
 .addstep-modal {
-  @include flexCenter(flex-start, flex-start, column);
+  @include flexCenter(center, center, column);
 
 }

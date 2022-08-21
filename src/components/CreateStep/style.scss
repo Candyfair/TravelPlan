@@ -25,9 +25,9 @@
         @include flexCenter(flex-start, flex-start, row);
       }
 
-      &__calendar {
+      &__time-icon {
         cursor: pointer;
-        margin-top: 2px;
+        margin-top: 3px;
       }
     }
   }
@@ -49,11 +49,15 @@
 
     &__input-short {
       width: 110px;
-      margin-right: 2px;
+      margin-right: 4px;
     }
 
     &__input-long {
       width: 100%;
+    }
+
+    &__button {
+      // CENTER LE BOUTON
     }
   }
 }
