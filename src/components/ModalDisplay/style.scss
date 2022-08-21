@@ -1,0 +1,28 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.menu {
+  // Fond noir transparent
+  @include flexCenter(flex-start, center, column);
+  position: fixed;
+  background-color: $modal-background;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  // Fenêtre modale
+  &__modal {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    background: linear-gradient(160deg, $background 20%, $white 130%);
+    width: 90%;
+    max-width: 450px;
+    border-radius: 8px;
+    border: 1px solid $text;
+    padding: $spacer;
+  }
+}

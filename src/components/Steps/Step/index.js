@@ -25,47 +25,47 @@ const Step = ({
   let stepType = '';
   switch (type.code) {
     case 'fasttrain':
-      stepType = CONSTANTS.ICONS.fasttrain;
+      stepType = CONSTANTS.TRAVEL.fasttrain;
       break;
 
     case 'train':
-      stepType = CONSTANTS.ICONS.train;
+      stepType = CONSTANTS.TRAVEL.train;
       break;
 
     case 'boat':
-      stepType = CONSTANTS.ICONS.boat;
+      stepType = CONSTANTS.TRAVEL.boat;
       break;
 
     case 'bus':
-      stepType = CONSTANTS.ICONS.bus;
+      stepType = CONSTANTS.TRAVEL.bus;
       break;
 
     case 'car':
-      stepType = CONSTANTS.ICONS.car;
+      stepType = CONSTANTS.TRAVEL.car;
       break;
 
-    case 'metro':
-      stepType = CONSTANTS.ICONS.metro;
+    case 'other':
+      stepType = CONSTANTS.TRAVEL.other;
       break;
 
     case 'hotel':
-      stepType = CONSTANTS.ICONS.hotel;
+      stepType = CONSTANTS.TRAVEL.hotel;
       break;
 
     case 'plane':
-      stepType = CONSTANTS.ICONS.plane;
+      stepType = CONSTANTS.TRAVEL.plane;
       break;
 
     case 'restaurant':
-      stepType = CONSTANTS.ICONS.restaurant;
+      stepType = CONSTANTS.TRAVEL.restaurant;
       break;
 
     case 'taxi':
-      stepType = CONSTANTS.ICONS.taxi;
+      stepType = CONSTANTS.TRAVEL.taxi;
       break;
 
     case 'tramway':
-      stepType = CONSTANTS.ICONS.tramway;
+      stepType = CONSTANTS.TRAVEL.tramway;
       break;
 
     default:
@@ -85,7 +85,10 @@ const Step = ({
           <p className="trip__frame__date">{moment(departureDate).format('DD MMM', true)}</p>
 
           {/* <div className="trip__frame__transport"> */}
-          <Icon icon={stepType} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+          {
+            type
+            && <Icon icon={stepType} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
+          }
           <p className="trip__frame__transport__name">{travelName}</p>
           {/* </div> */}
         </div>

@@ -69,12 +69,23 @@ input, select {
   margin-bottom: calc(vars.$spacer/2);
 }
 
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: vars.$spacer*1.5;
+}
+
 .subtitle {
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .caption {
   font-size: 0.7rem;
   text-transform: uppercase;
   text-align: center;
+}
+
+.step-caption {
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }
