@@ -8,5 +8,18 @@
   &__close {
     cursor: pointer;
     text-align: right;
+    padding-top: $spacer;
+    margin-right: -$spacer*1.5;
+  }
+}
+
+// Desktop 
+@media only screen and (min-width: 480px) {
+  .header-modal {
+
+    &__close {
+      padding-top: 0;
+      margin-right: 0;
+    }
   }
 }

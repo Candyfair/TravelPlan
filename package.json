@@ -53,6 +53,7 @@
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
+    "react-ios-time-picker": "^0.2.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0"
