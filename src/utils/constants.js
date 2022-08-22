@@ -27,3 +27,7 @@ export const VIEWBOX = {
   viewboxArrows: '0 0 14 15',
   viewboxIcons: '0 0 24 24',
 };
+
+export const API = {
+  baseURL: 'https://itinerary-publisher-backend.herokuapp.com',
+};

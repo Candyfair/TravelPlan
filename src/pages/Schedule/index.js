@@ -17,11 +17,10 @@ import Steps from '../../components/Steps';
 import Icon from '../../components/Icon';
 import * as CONSTANTS from '../../utils/constants';
 
-
 // == Component
 const Schedule = () => {
   const dispatch = useDispatch();
-  const baseURL = process.env.REACT_APP_BASE_URL;
+  const { baseURL } = CONSTANTS.API;
   const { id } = useParams();
 
   useEffect(() => {
