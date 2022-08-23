@@ -4,15 +4,23 @@ import {
   MINUTE_DOWN,
   MINUTE_UP,
   SET_TIME,
+  SHOW_TIME_PICKER,
 } from '../actions/time';
 
 const initialState = {
+  timePicker: false,
   hour: 0,
   minute: 0,
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SHOW_TIME_PICKER:
+      return {
+        ...state,
+        timePicker: !state.timePicker,
+      };
+
     case HOUR_UP:
       return {
         ...state,

@@ -8,6 +8,7 @@ import { setIcon } from '../../redux/actions/create';
 import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
 import TimePicker from '../TimePicker/TimePicker';
+import { showTimePicker } from '../../redux/actions/time';
 
 // == Component
 const CreateStep = () => {
@@ -100,6 +101,13 @@ const CreateStep = () => {
     dispatch(setIcon(e.target.value));
   };
 
+  // Show time picker
+  const { timePicker } = useSelector((state) => state.time);
+
+  const handleShowTimePicker = () => {
+    dispatch(showTimePicker());
+  };
+
   return (
     <form className="create__wrapper">
       <div>
@@ -188,7 +196,6 @@ const CreateStep = () => {
 
         <div className="create__wrapper__join">
           {/* START DATE */}
-
           <div className="create__wrapper__input">
             <p className="create__form__label">
               {
@@ -261,21 +268,28 @@ const CreateStep = () => {
                   Departure time
                 </p>
 
-                <div className="create__wrapper__input__wrapper">
-                  <Input
-                    inputName="startTime"
-                    className="create__form__input-short"
-                  />
+                {
+                  timePicker
+                    ? <TimePicker />
 
-                  <span className="create__wrapper__input__time-icon">
-                    <Icon
-                      icon={CONSTANTS.ICONS.clock}
-                      size={24}
-                      viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
-                    />
-                  </span>
-                </div>
-                <TimePicker />
+                    : (
+                      <div className="create__wrapper__input__wrapper">
+                        <Input
+                          inputName="startTime"
+                          className="create__form__input-short"
+                        />
+
+                        <span className="create__wrapper__input__time-icon" onClick={handleShowTimePicker}>
+                          <Icon
+                            icon={CONSTANTS.ICONS.clock}
+                            size={24}
+                            viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                          />
+                        </span>
+                      </div>
+                    )
+
+                }
               </div>
             )
           }
