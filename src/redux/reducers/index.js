@@ -4,6 +4,7 @@ import create from './create';
 import trips from './trips';
 import users from './users';
 import modals from './modals';
+import time from './time';
 
 export default combineReducers({
   steps,
@@ -11,4 +12,5 @@ export default combineReducers({
   trips,
   users,
   modals,
+  time,
 });

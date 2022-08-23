@@ -7,6 +7,7 @@ import { setIcon } from '../../redux/actions/create';
 
 import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
+import TimePicker from '../TimePicker/TimePicker';
 
 // == Component
 const CreateStep = () => {
@@ -98,6 +99,7 @@ const CreateStep = () => {
   const handleIconChange = (e) => {
     dispatch(setIcon(e.target.value));
   };
+
   return (
     <form className="create__wrapper">
       <div>
@@ -273,6 +275,7 @@ const CreateStep = () => {
                     />
                   </span>
                 </div>
+                <TimePicker />
               </div>
             )
           }

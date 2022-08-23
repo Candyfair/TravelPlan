@@ -16,6 +16,7 @@ const initialState = {
   endTime: '',
   details: '',
   stepPosition: '',
+  timePicker: false, // Time picker
 };
 
 const reducer = (state = initialState, action = {}) => {
