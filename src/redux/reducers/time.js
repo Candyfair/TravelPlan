@@ -8,7 +8,7 @@ import {
 } from '../actions/time';
 
 const initialState = {
-  timePicker: false,
+  picker: false,
   hour: 0,
   minute: 0,
 };
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action = {}) => {
     case SHOW_TIME_PICKER:
       return {
         ...state,
-        timePicker: !state.timePicker,
+        picker: true,
       };
 
     case HOUR_UP:

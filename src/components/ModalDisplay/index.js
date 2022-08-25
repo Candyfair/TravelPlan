@@ -33,6 +33,6 @@ const ModalDisplay = () => {
 
     </div>
   );
-}
+};
 
 export default ModalDisplay;

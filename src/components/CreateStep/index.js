@@ -7,7 +7,7 @@ import { setIcon } from '../../redux/actions/create';
 
 import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
-import TimePicker from '../TimePicker/TimePicker';
+import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
 import { showTimePicker } from '../../redux/actions/time';
 
 // == Component
@@ -102,7 +102,7 @@ const CreateStep = () => {
   };
 
   // Show time picker
-  const { timePicker } = useSelector((state) => state.time);
+  const { picker } = useSelector((state) => state.time);
 
   const handleShowTimePicker = () => {
     dispatch(showTimePicker());
@@ -268,28 +268,21 @@ const CreateStep = () => {
                   Departure time
                 </p>
 
-                {
-                  timePicker
-                    ? <TimePicker />
+                <div className="create__wrapper__input__wrapper">
+                  <Input
+                    inputName="startTime"
+                    className="create__form__input-short"
+                  />
 
-                    : (
-                      <div className="create__wrapper__input__wrapper">
-                        <Input
-                          inputName="startTime"
-                          className="create__form__input-short"
-                        />
+                  <span className="create__wrapper__input__time-icon" onClick={handleShowTimePicker}>
+                    <Icon
+                      icon={CONSTANTS.ICONS.clock}
+                      size={24}
+                      viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                    />
+                  </span>
+                </div>
 
-                        <span className="create__wrapper__input__time-icon" onClick={handleShowTimePicker}>
-                          <Icon
-                            icon={CONSTANTS.ICONS.clock}
-                            size={24}
-                            viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
-                          />
-                        </span>
-                      </div>
-                    )
-
-                }
               </div>
             )
           }
@@ -344,6 +337,9 @@ const CreateStep = () => {
         Add step
       </button>
 
+      {
+        picker && <TimePicker />
+      }
     </form>
   );
 };

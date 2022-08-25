@@ -1,7 +1,12 @@
 /* eslint-disable react/self-closing-comp */
-import { min } from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
-import { hourDown, hourUp, minuteDown, minuteUp, setTime } from '../../redux/actions/time';
+import {
+  hourDown,
+  hourUp,
+  minuteDown,
+  minuteUp,
+  setTime,
+} from '../../../redux/actions/time';
 import './style.scss';
 
 const TimePicker = () => {
