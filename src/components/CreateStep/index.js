@@ -9,10 +9,11 @@ import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
 import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
 import { setField, showTimePicker } from '../../redux/actions/time';
+import { useEffect } from 'react';
 
 // == Component
 const CreateStep = () => {
-  const { icon } = useSelector((state) => state.create);
+  const { icon, startTime, endTime } = useSelector((state) => state.create);
   const dispatch = useDispatch();
 
   // Array for transport options
@@ -104,10 +105,27 @@ const CreateStep = () => {
   // Show time picker
   const { picker } = useSelector((state) => state.time);
 
-  const showDepartureTimePicker = () => {
+  const showStartTimePicker = () => {
     dispatch(setField('startTime'));
     dispatch(showTimePicker(true));
   };
+
+  const showEndTimePicker = () => {
+    dispatch(setField('endTime'));
+    dispatch(showTimePicker(true));
+  };
+
+  let updatedStartTime = startTime;
+  let udpdatedEndTime = endTime;
+
+  // Show times
+  useEffect(() => {
+    if (startTime || endTime) {
+      updatedStartTime = startTime;
+      udpdatedEndTime = endTime;
+      console.log('Je suis dans le useEffect, updatedStartTime: ', updatedStartTime);
+    }
+  }, [startTime, endTime]);
 
   return (
     <form className="create__wrapper">
@@ -270,12 +288,23 @@ const CreateStep = () => {
                 </p>
 
                 <div className="create__wrapper__input__wrapper">
-                  <Input
-                    inputName="startTime"
-                    className="create__form__input-short"
-                  />
+                  {
+                    !startTime
+                      ? (
+                        <Input
+                          inputName="startTime"
+                          className="create__form__input-short"
+                        />
+                      )
+                      : (
+                        <span className="create__form__updated-time">{updatedStartTime.substring(0, 5)}</span>
+                      )
+                  }
 
-                  <span className="create__wrapper__input__time-icon" onClick={showDepartureTimePicker}>
+                  <span
+                    className="create__wrapper__input__time-icon"
+                    onClick={showStartTimePicker}
+                  >
                     <Icon
                       icon={CONSTANTS.ICONS.clock}
                       size={24}
@@ -300,9 +329,13 @@ const CreateStep = () => {
                   <Input
                     inputName="endTime"
                     className="create__form__input-short"
+                    value={udpdatedEndTime}
                   />
 
-                  <span className="create__wrapper__input__time-icon">
+                  <span
+                    className="create__wrapper__input__time-icon"
+                    onClick={showEndTimePicker}
+                  >
                     <Icon
                       icon={CONSTANTS.ICONS.clock}
                       size={24}

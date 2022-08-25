@@ -60,5 +60,11 @@
     &__button {
       margin-top: calc($spacer/2);
     }
+
+    &__updated-time {
+      font-size: 1.2rem;
+      margin-right: 66px;
+      color: $booking-details;
+    }
   }
 }

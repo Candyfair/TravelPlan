@@ -66,8 +66,12 @@ const TimePicker = () => {
 
   const handleClose = () => {
     if (field === 'startTime') {
-      const startTime = formatTime(hour) + ':' + formatTime(minute) + ':00';
+      const startTime = `${formatTime(hour)}:${formatTime(minute)}:00`;
       dispatch(changeValue('startTime', startTime));
+    }
+    else {
+      const endTime = `${formatTime(hour)}:${formatTime(minute)}:00`;
+      dispatch(changeValue('endTime', endTime));
     }
 
     dispatch(showTimePicker(false));
