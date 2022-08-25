@@ -8,7 +8,7 @@ import { setIcon } from '../../redux/actions/create';
 import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
 import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
-import { showTimePicker } from '../../redux/actions/time';
+import { setField, showTimePicker } from '../../redux/actions/time';
 
 // == Component
 const CreateStep = () => {
@@ -104,8 +104,9 @@ const CreateStep = () => {
   // Show time picker
   const { picker } = useSelector((state) => state.time);
 
-  const handleShowTimePicker = () => {
-    dispatch(showTimePicker());
+  const showDepartureTimePicker = () => {
+    dispatch(setField('startTime'));
+    dispatch(showTimePicker(true));
   };
 
   return (
@@ -274,7 +275,7 @@ const CreateStep = () => {
                     className="create__form__input-short"
                   />
 
-                  <span className="create__wrapper__input__time-icon" onClick={handleShowTimePicker}>
+                  <span className="create__wrapper__input__time-icon" onClick={showDepartureTimePicker}>
                     <Icon
                       icon={CONSTANTS.ICONS.clock}
                       size={24}

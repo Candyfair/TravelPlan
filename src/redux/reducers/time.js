@@ -3,6 +3,7 @@ import {
   HOUR_UP,
   MINUTE_DOWN,
   MINUTE_UP,
+  SET_FIELD,
   SET_TIME,
   SHOW_TIME_PICKER,
 } from '../actions/time';
@@ -11,6 +12,7 @@ const initialState = {
   picker: false,
   hour: 0,
   minute: 0,
+  field: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -18,7 +20,13 @@ const reducer = (state = initialState, action = {}) => {
     case SHOW_TIME_PICKER:
       return {
         ...state,
-        picker: true,
+        picker: action.value,
+      };
+
+    case SET_FIELD:
+      return {
+        ...state,
+        field: action.value,
       };
 
     case HOUR_UP:
