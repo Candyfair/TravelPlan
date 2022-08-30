@@ -1,4 +1,5 @@
 // == Imports
+import { useEffect } from 'react';
 import './style.scss';
 import Input from 'src/components/Input';
 
@@ -8,8 +9,7 @@ import { setIcon } from '../../redux/actions/create';
 import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
 import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
-import { setField, showTimePicker } from '../../redux/actions/time';
-import { useEffect } from 'react';
+import { setField, setTime, showTimePicker } from '../../redux/actions/time';
 
 // == Component
 const CreateStep = () => {
@@ -116,14 +116,15 @@ const CreateStep = () => {
   };
 
   let updatedStartTime = startTime;
-  let udpdatedEndTime = endTime;
+  let updatedEndTime = endTime;
 
   // Show times
   useEffect(() => {
     if (startTime || endTime) {
       updatedStartTime = startTime;
-      udpdatedEndTime = endTime;
-      console.log('Je suis dans le useEffect, updatedStartTime: ', updatedStartTime);
+      updatedEndTime = endTime;
+      // dispatch(setTime('hour', 0));
+      // dispatch(setTime('minute', 0));
     }
   }, [startTime, endTime]);
 
@@ -326,12 +327,19 @@ const CreateStep = () => {
                 </p>
 
                 <div className="create__wrapper__input__wrapper">
-                  <Input
-                    inputName="endTime"
-                    className="create__form__input-short"
-                    value={udpdatedEndTime}
-                  />
+                  {
+                    !endTime
+                      ? (
+                        <Input
+                          inputName="endTime"
+                          className="create__form__input-short"
+                        />
+                      )
+                      : (
+                        <span className="create__form__updated-time">{updatedEndTime.substring(0, 5)}</span>
+                      )
 
+                  }
                   <span
                     className="create__wrapper__input__time-icon"
                     onClick={showEndTimePicker}

@@ -1,4 +1,5 @@
 /* eslint-disable react/self-closing-comp */
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   hourDown,
@@ -61,6 +62,13 @@ const TimePicker = () => {
     return time;
   };
 
+  // Cancel entry
+  const handleCancel = () => {
+    dispatch(setTime('hour', 0));
+    dispatch(setTime('minute', 0));
+    dispatch(showTimePicker(false));
+  };
+
   // Close modal
   const { field } = useSelector((state) => state.time);
 
@@ -107,17 +115,33 @@ const TimePicker = () => {
           <div className="timepicker__min-down" onClick={dispatchMinuteDown}></div>
         </div>
 
-        <button
-          type="button"
-          className="timepicker__button"
-          onClick={handleClose}
-        >
-          <Icon
-            icon={CONSTANTS.ICONS.approve}
-            size={22}
-            viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
-          />
-        </button>
+        <div className="timepicker__buttons-wrapper">
+          {/* Annuler */}
+          <button
+            type="button"
+            className="timepicker__button-close"
+            onClick={handleCancel}
+          >
+            <Icon
+              icon={CONSTANTS.ICONS.cancel}
+              size={22}
+              viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+            />
+          </button>
+
+          {/* Valider */}
+          <button
+            type="button"
+            className="timepicker__button-validate"
+            onClick={handleClose}
+          >
+            <Icon
+              icon={CONSTANTS.ICONS.approve}
+              size={22}
+              viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+            />
+          </button>
+        </div>
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from '../../redux/actions/modals';
+import { setTime, showTimePicker } from '../../redux/actions/time';
 import ModalHeader from './ModalHeader';
 import ModalStep from './ModalStep';
 import './style.scss';
@@ -10,6 +11,9 @@ const ModalDisplay = () => {
 
   const handleClickOut = () => {
     dispatch(setModal(false, 'none'));
+    dispatch(showTimePicker(false));
+    dispatch(setTime('hour', 0));
+    dispatch(setTime('minute', 0));
   };
 
   const handleClickIn = (e) => {
@@ -21,9 +25,9 @@ const ModalDisplay = () => {
   return (
     <div
       open={modal}
-      onClose={() => dispatch(setModal(false, 'none'))}
+      onClose={handleClickOut}
     >
-      <div className="menu" onClick={handleClickOut}>
+      <div className="menu">
         <div className="menu__modal" onClick={handleClickIn}>
           <ModalHeader />
           <ModalStep />

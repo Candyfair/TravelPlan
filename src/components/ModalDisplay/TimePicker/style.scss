@@ -89,9 +89,30 @@
     font-size: 2rem;
   }
 
-  &__button {
+  &__buttons-wrapper {
+    @include flexCenter(center, center, column);
+  }
+
+  &__button-close, 
+  &__button-validate {
     padding: 2px;
     padding-top: 5px;
   }
 
+  &__button-close {
+    background-color: transparent;
+    margin-bottom: 5px;
+
+    &:hover {
+      background-color: $inactive;
+    }
+  }
+
+  &__button-validate {
+    background-color: $background;
+
+    &:hover {
+      background-color: $inactive;
+    }
+  }
 }
