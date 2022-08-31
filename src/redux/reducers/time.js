@@ -14,7 +14,7 @@ const initialState = {
   hour: 0,
   minute: 0,
   field: '',
-  calendar: true, // Show calendar
+  calendar: false, // Show calendar
 };
 
 const reducer = (state = initialState, action = {}) => {

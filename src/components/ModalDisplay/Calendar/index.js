@@ -43,6 +43,7 @@ const Calendar = () => {
       const endDate = format(day, 'MM/dd/y');
       dispatch(changeValue('endDate', endDate));
     }
+    dispatch(showCalendar(false));
   };
 
   return (
@@ -52,29 +53,18 @@ const Calendar = () => {
         {/* Calendar header */}
         <div className="calendar__header">
 
-          {/* Close calendar */}
+          {/* Close button */}
           <div
             onClick={handleCancel}
             className="calendar__header__close"
           >
             <Icon
-              icon={CONSTANTS.ICONS.closecircle}
-              size={25}
+              icon={CONSTANTS.ICONS.close}
+              size={22}
               viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
             />
           </div>
 
-          {/* Approve and close */}
-          <div
-            onClick={handleCancel}
-            className="calendar__header__close"
-          >
-            <Icon
-              icon={CONSTANTS.ICONS.approvecircle}
-              size={25}
-              viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
-            />
-          </div>
         </div>
 
         {/* DayPicker */}

@@ -310,7 +310,7 @@ const CreateStep = () => {
                       : (
                         <input
                           className="create__form__input-short"
-                          value={updatedEndDate}
+                          value={moment(updatedEndDate).format('DD/MM/YYYY')}
                           readOnly
                         />
                       )
@@ -352,6 +352,7 @@ const CreateStep = () => {
                         <input
                           className="create__form__input-short"
                           value={updatedStartTime.substring(0, 5)}
+                          readOnly
                         />
                       )
                   }
@@ -391,8 +392,9 @@ const CreateStep = () => {
                       )
                       : (
                         <input
-                          className="create__form__updated-time"
+                          className="create__form__input-short"
                           value={updatedEndTime.substring(0, 5)}
+                          readOnly
                         />
                       )
 
