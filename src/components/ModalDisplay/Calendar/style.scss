@@ -1,0 +1,50 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.calendar {
+  // @include flexCenter(space-around, center, column);
+
+  position: fixed;
+  top: 50px;
+  z-index: 100;
+
+  background-color: $time-picker;
+	border-radius: 8px;
+	box-shadow: 0px 0px 8px $modal-background;
+
+	padding: 10px;
+
+  &__header {
+    flex: display;
+    justify-content: flex-end;
+
+    &__close {
+      cursor: pointer;
+      text-align: right;
+    }
+  }
+
+}
+
+// .calendar-tail {
+//   width: 0;
+//   height: 0;
+//   border-left: 10px solid transparent;
+//   border-right: 10px solid transparent;
+//   border-top: 10px solid $time-picker;
+//   position: absolute;
+//   bottom: -9px;
+
+//   &__start {
+//     left: 113px;
+//   }
+
+//   &__end {
+//     right: 25px;
+//   }
+// }
+
+// DayPicker customized styles
+.rdp {
+  --rdp-cell-size: 35px;
+}

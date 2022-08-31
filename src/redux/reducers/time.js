@@ -5,14 +5,16 @@ import {
   MINUTE_UP,
   SET_FIELD,
   SET_TIME,
+  SHOW_CALENDAR,
   SHOW_TIME_PICKER,
 } from '../actions/time';
 
 const initialState = {
-  picker: false,
+  picker: false, // show time picker
   hour: 0,
   minute: 0,
-  field: '',
+  field: 'startDate',
+  calendar: true, // Show calendar
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -21,6 +23,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         picker: action.value,
+      };
+
+    case SHOW_CALENDAR:
+      return {
+        ...state,
+        calendar: action.value,
       };
 
     case SET_FIELD:

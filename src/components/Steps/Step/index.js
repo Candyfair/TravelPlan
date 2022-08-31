@@ -19,7 +19,7 @@ const Step = ({
   // position,
   type,
 }) => {
-  console.log('Je suis dans le composant Step');
+  // console.log('Je suis dans le composant Step');
 
   // Show transport icon
   let stepType = '';
