@@ -13,7 +13,7 @@ const initialState = {
   picker: false, // show time picker
   hour: 0,
   minute: 0,
-  field: 'startDate',
+  field: '',
   calendar: true, // Show calendar
 };
 

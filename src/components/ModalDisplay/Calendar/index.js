@@ -45,25 +45,33 @@ const Calendar = () => {
     }
   };
 
-  const footer = selected ? (
-    <p>You selected {format(selected, 'P')}.</p>
-  ) : (
-    <p>Please pick a day.</p>
-  );
-
   return (
     <>
       <div className="calendar">
 
         {/* Calendar header */}
         <div className="calendar__header">
+
+          {/* Close calendar */}
           <div
             onClick={handleCancel}
             className="calendar__header__close"
           >
             <Icon
-              icon={CONSTANTS.ICONS.close}
-              size={22}
+              icon={CONSTANTS.ICONS.closecircle}
+              size={25}
+              viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+            />
+          </div>
+
+          {/* Approve and close */}
+          <div
+            onClick={handleCancel}
+            className="calendar__header__close"
+          >
+            <Icon
+              icon={CONSTANTS.ICONS.approvecircle}
+              size={25}
               viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
             />
           </div>
@@ -77,9 +85,7 @@ const Calendar = () => {
           // Pick a day
           mode="single"
           selected={selected}
-          // onSelect={setSelectedDay}
           onSelect={handleDaySelect}
-          footer={footer}
           // Starting Monday
           weekStartsOn={1}
         />

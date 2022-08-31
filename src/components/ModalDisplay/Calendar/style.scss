@@ -15,8 +15,7 @@
 	padding: 10px;
 
   &__header {
-    flex: display;
-    justify-content: flex-end;
+    @include flexCenter(flex-end, flex-end, row);
 
     &__close {
       cursor: pointer;
@@ -25,24 +24,6 @@
   }
 
 }
-
-// .calendar-tail {
-//   width: 0;
-//   height: 0;
-//   border-left: 10px solid transparent;
-//   border-right: 10px solid transparent;
-//   border-top: 10px solid $time-picker;
-//   position: absolute;
-//   bottom: -9px;
-
-//   &__start {
-//     left: 113px;
-//   }
-
-//   &__end {
-//     right: 25px;
-//   }
-// }
 
 // DayPicker customized styles
 .rdp {

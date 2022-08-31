@@ -241,6 +241,7 @@ const CreateStep = () => {
         }
 
         <div className="create__wrapper__join">
+
           {/* START DATE */}
           <div className="create__wrapper__input">
             <p className="create__form__label">
@@ -348,7 +349,10 @@ const CreateStep = () => {
                         />
                       )
                       : (
-                        <span className="create__form__updated-time">{updatedStartTime.substring(0, 5)}</span>
+                        <input
+                          className="create__form__input-short"
+                          value={updatedStartTime.substring(0, 5)}
+                        />
                       )
                   }
 
@@ -386,7 +390,10 @@ const CreateStep = () => {
                         />
                       )
                       : (
-                        <span className="create__form__updated-time">{updatedEndTime.substring(0, 5)}</span>
+                        <input
+                          className="create__form__updated-time"
+                          value={updatedEndTime.substring(0, 5)}
+                        />
                       )
 
                   }
