@@ -5,7 +5,9 @@ export const MINUTE_UP = 'MINUTE_UP';
 export const MINUTE_DOWN = 'MINUTE_DOWN';
 export const SHOW_TIME_PICKER = 'SHOW_TIME_PICKER';
 export const SET_FIELD = 'SET_FIELD';
+export const SHOW_CALENDAR = 'SHOW_CALENDAR';
 
+// Actions for time picker
 export const setTime = (key, value) => ({
   type: SET_TIME,
   key,
@@ -37,3 +39,10 @@ export const setField = (value) => ({
   type: SET_FIELD,
   value,
 });
+
+// Actions for calendar
+export const showCalendar = (value) => ({
+  type: SHOW_CALENDAR,
+  value,
+});
+

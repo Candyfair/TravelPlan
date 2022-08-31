@@ -1,8 +1,8 @@
 import { SET_MODAL } from '../actions/modals';
 
 const initialState = {
-  modal: true,
-  element: 'step',
+  modal: false,
+  element: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

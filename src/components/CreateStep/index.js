@@ -1,19 +1,30 @@
 // == Imports
 import { useEffect } from 'react';
+import moment from 'moment';
 import './style.scss';
+
 import Input from 'src/components/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { setField, showCalendar, showTimePicker } from '../../redux/actions/time';
 import { setIcon } from '../../redux/actions/create';
 
-import Icon from '../Icon';
 import * as CONSTANTS from '../../utils/constants';
+import Icon from '../Icon';
+
 import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
-import { setField, setTime, showTimePicker } from '../../redux/actions/time';
+import Calendar from '../ModalDisplay/Calendar';
 
 // == Component
 const CreateStep = () => {
-  const { icon, startTime, endTime } = useSelector((state) => state.create);
+  const {
+    icon,
+    startTime,
+    endTime,
+    startDate,
+    endDate,
+  } = useSelector((state) => state.create);
+
   const dispatch = useDispatch();
 
   // Array for transport options
@@ -102,8 +113,18 @@ const CreateStep = () => {
     dispatch(setIcon(e.target.value));
   };
 
-  // Show time picker
-  const { picker } = useSelector((state) => state.time);
+  // Show time picker & calendar
+  const { picker, calendar } = useSelector((state) => state.time);
+
+  const showStartDateCalendar = () => {
+    dispatch(setField('startDate'));
+    dispatch(showCalendar(true));
+  };
+
+  const showEndDateCalendar = () => {
+    dispatch(setField('endDate'));
+    dispatch(showCalendar(true));
+  };
 
   const showStartTimePicker = () => {
     dispatch(setField('startTime'));
@@ -117,16 +138,21 @@ const CreateStep = () => {
 
   let updatedStartTime = startTime;
   let updatedEndTime = endTime;
+  let updatedStartDate = startDate;
+  let updatedEndDate = endDate;
 
   // Show times
   useEffect(() => {
     if (startTime || endTime) {
       updatedStartTime = startTime;
       updatedEndTime = endTime;
-      // dispatch(setTime('hour', 0));
-      // dispatch(setTime('minute', 0));
     }
-  }, [startTime, endTime]);
+    if (startDate || endDate) {
+      // updatedStartDate = moment(startDate).format('DD/MM/YYYY');
+      updatedStartDate = startDate;
+      updatedEndDate = moment(endDate).format('DD/MM/YYYY');
+    }
+  }, [startTime, endTime, startDate, endDate]);
 
   return (
     <form className="create__wrapper">
@@ -215,6 +241,7 @@ const CreateStep = () => {
         }
 
         <div className="create__wrapper__join">
+
           {/* START DATE */}
           <div className="create__wrapper__input">
             <p className="create__form__label">
@@ -230,12 +257,24 @@ const CreateStep = () => {
             </p>
 
             <div className="create__wrapper__input__wrapper">
-              <Input
-                inputName="startDate"
-                className="create__form__input-short"
-              />
+              {
+                !startDate
+                  ? (
+                    <Input
+                      inputName="startDate"
+                      className="create__form__input-short"
+                    />
+                  )
+                  : (
+                    <input
+                      className="create__form__input-short"
+                      value={moment(updatedStartDate).format('DD/MM/YYYY')}
+                      readOnly
+                    />
+                  )
+              }
 
-              <span className="create__wrapper__input__time-icon">
+              <span className="create__wrapper__input__time-icon" onClick={showStartDateCalendar}>
                 <Icon
                   icon={CONSTANTS.ICONS.calendar}
                   size={24}
@@ -260,12 +299,24 @@ const CreateStep = () => {
                 </p>
 
                 <div className="create__wrapper__input__wrapper">
-                  <Input
-                    inputName="endDate"
-                    className="create__form__input-short"
-                  />
+                  {
+                    !endDate
+                      ? (
+                        <Input
+                          inputName="endDate"
+                          className="create__form__input-short"
+                        />
+                      )
+                      : (
+                        <input
+                          className="create__form__input-short"
+                          value={moment(updatedEndDate).format('DD/MM/YYYY')}
+                          readOnly
+                        />
+                      )
+                  }
 
-                  <span className="create__wrapper__input__time-icon">
+                  <span className="create__wrapper__input__time-icon" onClick={showEndDateCalendar}>
                     <Icon
                       icon={CONSTANTS.ICONS.calendar}
                       size={24}
@@ -298,7 +349,11 @@ const CreateStep = () => {
                         />
                       )
                       : (
-                        <span className="create__form__updated-time">{updatedStartTime.substring(0, 5)}</span>
+                        <input
+                          className="create__form__input-short"
+                          value={updatedStartTime.substring(0, 5)}
+                          readOnly
+                        />
                       )
                   }
 
@@ -336,7 +391,11 @@ const CreateStep = () => {
                         />
                       )
                       : (
-                        <span className="create__form__updated-time">{updatedEndTime.substring(0, 5)}</span>
+                        <input
+                          className="create__form__input-short"
+                          value={updatedEndTime.substring(0, 5)}
+                          readOnly
+                        />
                       )
 
                   }
@@ -378,6 +437,9 @@ const CreateStep = () => {
       >
         Add step
       </button>
+      {
+        calendar && <Calendar />
+      }
 
       {
         picker && <TimePicker />

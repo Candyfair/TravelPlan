@@ -1,5 +1,4 @@
 /* eslint-disable react/self-closing-comp */
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   hourDown,

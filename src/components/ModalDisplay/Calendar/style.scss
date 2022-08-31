@@ -1,0 +1,31 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.calendar {
+  // @include flexCenter(space-around, center, column);
+
+  position: fixed;
+  top: 50px;
+  z-index: 100;
+
+  background-color: $time-picker;
+	border-radius: 8px;
+	box-shadow: 0px 0px 8px $modal-background;
+
+	padding: 10px;
+
+  &__header {
+    @include flexCenter(flex-end, flex-end, row);
+
+    &__close {
+      cursor: pointer;
+      text-align: right;
+    }
+  }
+
+}
+
+// DayPicker customized styles
+.rdp {
+  --rdp-cell-size: 35px;
+}

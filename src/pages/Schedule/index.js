@@ -39,8 +39,6 @@ const Schedule = () => {
 
   const trip = useSelector((state) => state.trips.selectedTrip);
 
-  console.log('Je suis dans le composant Schedule');
-
   // Get trip's start and end dates
   const { steps } = trip;
   let firstDate = '';
@@ -60,8 +58,9 @@ const Schedule = () => {
     );
   };
 
-  // Open Step modal
+  // Open Add Step modal
   const handleOpenModal = () => {
+    dispatch(changeValue('id', id));
     dispatch(setModal(true, 'step'));
   };
 
