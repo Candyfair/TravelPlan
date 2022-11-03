@@ -18,7 +18,6 @@ import {
 import { fetchTrips } from './redux/actions/trips';
 
 // Static data for sharing link
-import dataEuropeStatic from './data/europeJourney2';
 import { fetchUsersTrips } from './redux/actions/users';
 import ModalDisplay from './components/ModalDisplay';
 
@@ -34,9 +33,6 @@ const App = () => {
     dispatch(action2);
   }, []);
 
-  // Static data for sharing link
-  const { journeyNameEurope, journeyDetailsEurope } = dataEuropeStatic;
-
   return (
     <div className="app">
       <ScrollTop />
@@ -45,10 +41,6 @@ const App = () => {
           <Route path="/" element={<Home />} exact />
           <Route path="/schedule/:id/:slug" element={<Schedule />} />
           <Route path="/create" element={<Create />} exact />
-
-          {/* Route for sharing static data */}
-          <Route path="/europe-journey" element={<Schedule destination={journeyNameEurope} details={journeyDetailsEurope} />} />
-
         </Routes>
         <ModalDisplay />
       </Layout>

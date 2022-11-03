@@ -1,4 +1,6 @@
-import { FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS, SET_LOADING } from '../actions/trips';
+import {
+  FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS, SET_LOADING,
+} from '../actions/trips';
 
 export const initialState = {
   loading: false,

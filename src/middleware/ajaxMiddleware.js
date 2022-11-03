@@ -4,6 +4,7 @@ import api from './api';
 import { ADD_TRIP, changeValue } from '../redux/actions/create';
 import { FETCH_TRIPS, receivedTrips, setLoading } from '../redux/actions/trips';
 import { FETCH_USERS_TRIPS, receivedUsersTrips } from '../redux/actions/users';
+import { FETCH_TYPES, receivedTypes } from '../redux/actions/types';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -66,6 +67,21 @@ export default (store) => (next) => (action) => {
         });
 
       next(action);
+      break;
+
+    case FETCH_TYPES:
+      next(action);
+
+      api.get(
+        '/types',
+      )
+        .then((res) => {
+          const typesAction = receivedTypes(res.data);
+          store.dispatch(typesAction);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       break;
 
     default:

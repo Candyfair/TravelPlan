@@ -33,5 +33,5 @@ export const VIEWBOX = {
 };
 
 export const API = {
-  baseURL: 'https://itinerary-publisher-backend.herokuapp.com',
+  baseURL: 'https://itinerary-publisher.up.railway.app',
 };
