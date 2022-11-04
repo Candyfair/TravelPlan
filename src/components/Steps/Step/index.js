@@ -82,8 +82,8 @@ const Step = ({
   }
 
   // Convert dates
-  const departureDate = moment(startDate, 'AAAA-MM-DD');
-  const arrivalDate = moment(endDate, 'AAAA-MM-DD');
+  const departureDate = moment(startDate, 'YYYY-MM-DD');
+  const arrivalDate = moment(endDate, 'YYYY-MM-DD');
   const nbNights = arrivalDate.diff(departureDate, 'days');
 
   return (
