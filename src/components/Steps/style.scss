@@ -1,0 +1,8 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.trip-container {
+ @include flexCenter(space-between, center, column);
+ max-width: 450px;
+ width: 100%;
+}

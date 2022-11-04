@@ -8,7 +8,7 @@ const Steps = ({ steps }) => {
   console.log('Je suis dans le composant Steps');
 
   return !steps ? null : (
-    <div>
+    <div className="trip-container">
       {
         steps && steps.map((step) => (
           <Step
