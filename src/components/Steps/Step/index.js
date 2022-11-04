@@ -128,6 +128,8 @@ const Step = ({
         <div className={`trip__middle${type.code === 'hotel' ? ' center' : ' hide'}`}>
           <p className="trip__middle__stay-label">{nbNights} night{nbNights > 1 ? 's' : ''} in</p>
           <p className={`trip__middle__stay${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>{pointDeparture}</p>
+          <p className="trip__middle__checkin-label">check-in: {moment(startTime, 'HH:mm:ss').format('HH:mm')} | check-out: {moment(endTime, 'HH:mm:ss').format('HH:mm')}</p>
+
         </div>
 
         {/* Last frame */}

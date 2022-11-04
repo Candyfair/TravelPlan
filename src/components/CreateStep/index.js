@@ -330,55 +330,65 @@ const CreateStep = () => {
         </div>
 
         <div className="create__wrapper__join">
+
           {/* START TIME */}
-          {
-            (icon !== 'hotel' && icon !== 'restaurant')
-            && (
-              <div className="create__wrapper__input">
-                <p className="create__form__label">
-                  Departure time
-                </p>
+          <div className="create__wrapper__input">
+            <p className="create__form__label">
+              {
+              icon !== 'hotel' && icon !== 'restaurant' && 'Departure time:'
+              }
+              {
+              icon === 'hotel' && 'Check-in time:'
+              }
+              {
+              icon === 'restaurant' && 'Booking time:'
+              }
+            </p>
 
-                <div className="create__wrapper__input__wrapper">
-                  {
-                    !startTime
-                      ? (
-                        <Input
-                          inputName="startTime"
-                          className="create__form__input-short"
-                        />
-                      )
-                      : (
-                        <input
-                          className="create__form__input-short"
-                          value={updatedStartTime.substring(0, 5)}
-                          readOnly
-                        />
-                      )
-                  }
-
-                  <span
-                    className="create__wrapper__input__time-icon"
-                    onClick={showStartTimePicker}
-                  >
-                    <Icon
-                      icon={CONSTANTS.ICONS.clock}
-                      size={24}
-                      viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+            <div className="create__wrapper__input__wrapper">
+              {
+                !startTime
+                  ? (
+                    <Input
+                      inputName="startTime"
+                      className="create__form__input-short"
                     />
-                  </span>
-                </div>
+                  )
+                  : (
+                    <input
+                      className="create__form__input-short"
+                      value={updatedStartTime.substring(0, 5)}
+                      readOnly
+                    />
+                  )
+              }
 
-              </div>
-            )
-          }
+              <span
+                className="create__wrapper__input__time-icon"
+                onClick={showStartTimePicker}
+              >
+                <Icon
+                  icon={CONSTANTS.ICONS.clock}
+                  size={24}
+                  viewbox={CONSTANTS.VIEWBOX.viewboxIcons}
+                />
+              </span>
+            </div>
+
+          </div>
+            
           {/* END TIME */}
           {
-            (icon !== 'hotel' && icon !== 'restaurant')
+            icon !== 'restaurant'
             && (
               <div className="create__wrapper__input">
                 <p className="create__form__label">
-                  Arrival time
+                  {
+                  icon !== 'hotel' && 'Arrival time:'
+                  }
+                  {
+                  icon === 'hotel' && 'Check-out time:'
+                  }
                 </p>
 
                 <div className="create__wrapper__input__wrapper">

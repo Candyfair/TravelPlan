@@ -70,8 +70,13 @@
 
     // Hotel
     &__stay-label {
+      font-size: 0.85rem;
+      margin-bottom: 2px;
+    }
+
+    &__checkin-label {
       font-size: 0.7rem;
-      margin-bottom: 3px;
+      margin-top: 7px;
     }
 
     &__stay {
