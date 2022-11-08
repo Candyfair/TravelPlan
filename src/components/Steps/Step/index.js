@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
@@ -7,7 +5,6 @@ import './style.scss';
 
 import Icon from '../../Icon';
 import * as CONSTANTS from '../../../utils/constants';
-import { fetchTypes } from '../../../redux/actions/types';
 
 const Step = ({
   id,
@@ -22,14 +19,6 @@ const Step = ({
   // position,
   type,
 }) => {
-  // Get transport types from API
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const action = fetchTypes();
-    dispatch(action);
-  });
-
   // Show transport icon
   let stepType = '';
   switch (type.code) {

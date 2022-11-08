@@ -16,6 +16,7 @@ import {
 
 // API actions
 import { fetchTrips } from './redux/actions/trips';
+import { fetchTypes } from './redux/actions/types';
 
 // Static data for sharing link
 import { fetchUsersTrips } from './redux/actions/users';
@@ -27,10 +28,9 @@ const App = () => {
 
   // API call
   useEffect(() => {
-    const action = fetchTrips();
-    dispatch(action);
-    const action2 = fetchUsersTrips();
-    dispatch(action2);
+    dispatch(fetchTrips());
+    dispatch(fetchUsersTrips());
+    dispatch(fetchTypes());
   }, []);
 
   return (

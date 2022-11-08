@@ -7,6 +7,7 @@ import './style.scss';
 // import CreateTrip from 'src/components/CreateTrip';
 import Input from 'src/components/Input';
 import { addTrip, changeValue } from '../../redux/actions/create';
+
 import { slugify } from '../../utils/utils';
 
 // == Composant

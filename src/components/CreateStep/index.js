@@ -7,7 +7,7 @@ import Input from 'src/components/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setField, showCalendar, showTimePicker } from '../../redux/actions/time';
-import { setIcon } from '../../redux/actions/create';
+import { changeValue, setIcon } from '../../redux/actions/create';
 
 import * as CONSTANTS from '../../utils/constants';
 import Icon from '../Icon';
@@ -28,22 +28,7 @@ const CreateStep = () => {
   const dispatch = useDispatch();
 
   // Array for transport options
-  const options = [
-    { value: 'suspension', text: '-- Choose an option --' },
-    { value: 'train', text: 'Train' },
-    { value: 'fasttrain', text: 'Fast Train (Eurostar, TGV, ICE...)' },
-    { value: 'plane', text: 'Plane' },
-    { value: 'car', text: 'Car' },
-    { value: 'boat', text: 'Boat' },
-    { value: 'bus', text: 'Bus' },
-    { value: 'taxi', text: 'Taxi' },
-    { value: 'tramway', text: 'Metro / Tramway' },
-    { value: 'suspension2', text: '---' },
-    { value: 'hotel', text: 'Hotel / B&B / Camping...' },
-    { value: 'restaurant', text: 'Restaurant' },
-    { value: 'suspension3', text: '---' },
-    { value: 'other', text: 'Other' },
-  ];
+  const options = useSelector((state) => state.types.list);
 
   // Show transport icon
   let type = icon;
@@ -111,7 +96,17 @@ const CreateStep = () => {
   // Change transport icon
   const handleIconChange = (e) => {
     dispatch(setIcon(e.target.value));
+
+    // Add type ID in state
+    const foundType = options.find((option) => option.code === e.target.value);
+    if (foundType.id !== 1) {
+      dispatch(changeValue('stepType', foundType.id));
+    }
+    else {
+      dispatch(changeValue('stepType', ''));
+    }
   };
+
 
   // Show time picker & calendar
   const { picker, calendar } = useSelector((state) => state.time);
@@ -183,8 +178,8 @@ const CreateStep = () => {
               >
                 {
                   options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.text}
+                    <option key={option.id} value={option.code}>
+                      {option.name}
                     </option>
                   ))
                 }
@@ -376,7 +371,7 @@ const CreateStep = () => {
             </div>
 
           </div>
-            
+
           {/* END TIME */}
           {
             icon !== 'restaurant'

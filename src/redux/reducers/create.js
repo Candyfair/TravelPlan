@@ -15,6 +15,7 @@ const initialState = {
   startTime: '',
   endTime: '',
   details: '',
+  stepType: '',
   stepPosition: '',
 };
 
