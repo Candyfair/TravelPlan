@@ -105,7 +105,7 @@ export default (store) => (next) => (action) => {
         .then(
           (res) => {
             console.log('New step added:', res.date, 'id:', res.data.id);
-            store.dispatch(changeValue('id', res.data.id));
+            store.dispatch(changeValue('stepAdded', true));
           },
         )
         .catch((err) => {

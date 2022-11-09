@@ -17,6 +17,7 @@ const initialState = {
   arrivalPoint: '',
   details: '',
   stepType: '',
+  stepAdded: false,
 };
 
 const reducer = (state = initialState, action = {}) => {

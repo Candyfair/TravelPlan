@@ -5,6 +5,7 @@ import './style.scss';
 
 import Input from 'src/components/Input';
 
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setField, showCalendar, showTimePicker } from '../../redux/actions/time';
 import { addStep, changeValue, setIcon } from '../../redux/actions/create';
@@ -28,9 +29,11 @@ const CreateStep = () => {
     departurePoint,
     arrivalPoint,
     stepType,
+    stepAdded,
   } = useSelector((state) => state.create);
 
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   // Array for transport options
   const options = useSelector((state) => state.types.list);
@@ -89,11 +92,11 @@ const CreateStep = () => {
     case 'restaurant':
       type = CONSTANTS.TRAVEL.restaurant;
       break;
-
-    case 'other':
-      type = CONSTANTS.TRAVEL.other;
-      break;
-
+      
+      case 'other':
+        type = CONSTANTS.TRAVEL.other;
+        break;
+        
     default:
       return type;
   }
@@ -153,10 +156,21 @@ const CreateStep = () => {
     }
   }, [startTime, endTime, startDate, endDate]);
 
+  // Close modal after submitting info
+  const handleCloseModal = () => {
+    console.log('Fermer la modale');
+  };
+
   // Add step to the trip
-  const handleCreateStep = () => {
+  const handleCreateStep = (e) => {
+    e.preventDefault();
+
     // Check if mandatory fields are complete - EXIT if not
     if (stepType === '' || travelName === '' || departurePoint === '' || startDate === '' || startTime === '') return dispatch(changeTitle('*** PLEASE FILL IN ALL FIELDS ***'));
+
+    if (stepType !== 11 && stepType !== 12) {
+      if (arrivalPoint === '' || endDate === '' || endTime === '') return dispatch(changeTitle('*** PLEASE FILL IN ALL FIELDS ***'));
+    }
 
     // Complete fields for hotel
     if (stepType === 11) {
@@ -183,7 +197,17 @@ const CreateStep = () => {
 
     // Validate dispatch
     dispatch(addStep());
+
+    handleCloseModal();
   };
+
+  // Wait until the API has answered to redirect to new trip's page
+  useEffect(() => {
+    if (stepAdded) {
+      // navigate(`/schedule/${id}/${slug}`);
+      console.log('L\'API a répondu');
+    }
+  }, [stepAdded]);
 
   return (
     <form className="create__wrapper">
