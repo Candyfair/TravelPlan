@@ -7,16 +7,16 @@ const initialState = {
   user: '',
   position: '',
   icon: 'suspension', // Add step
+  stepPosition: '',
   travelName: '',
-  departurePoint: '',
-  arrivalPoint: '',
   startDate: '',
   endDate: '',
   startTime: '',
   endTime: '',
+  departurePoint: '',
+  arrivalPoint: '',
   details: '',
   stepType: '',
-  stepPosition: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

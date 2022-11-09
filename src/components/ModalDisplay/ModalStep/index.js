@@ -1,16 +1,22 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CreateStep from '../../CreateStep';
 
 import './style.scss';
 
 const ModalStep = () => {
-  const { element } = useSelector((state) => state.modals);
+  const { element, title } = useSelector((state) => state.modals);
+
+  // Display error message instead of title
+  useEffect(() => {
+    console.log('Updating the title');
+  }, [title]);
 
   if (element !== 'step') return null;
 
   return (
     <section className="addstep-modal">
-      <h1 className="modal-title">Add a new step to your trip</h1>
+      <h1 className="modal-title">{title}</h1>
       <CreateStep />
     </section>
   );

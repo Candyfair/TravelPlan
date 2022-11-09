@@ -16,7 +16,7 @@ const Step = ({
   pointDeparture,
   pointArrival,
   details,
-  // position,
+  position,
   type,
 }) => {
   // Show transport icon
@@ -133,7 +133,7 @@ const Step = ({
 
 Step.propTypes = {
   id: PropTypes.number.isRequired,
-  // position: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
   travelName: PropTypes.string.isRequired,
   type: PropTypes.object.isRequired,
   startDate: PropTypes.string.isRequired,

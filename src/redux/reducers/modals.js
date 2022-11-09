@@ -1,8 +1,9 @@
-import { SET_MODAL } from '../actions/modals';
+import { CHANGE_TITLE, SET_MODAL } from '../actions/modals';
 
 const initialState = {
   modal: false,
   element: '',
+  title: 'Add a new step to your trip',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -12,6 +13,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         modal: action.value,
         element: action.element,
+      };
+
+    case CHANGE_TITLE:
+      return {
+        ...state,
+        title: action.value,
       };
 
     default:

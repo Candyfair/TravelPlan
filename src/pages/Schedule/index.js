@@ -64,17 +64,25 @@ const Schedule = () => {
     dispatch(setModal(true, 'step'));
   };
 
-  // Choice of subtitle
+  // Choice of subtitle + get last step's position
   let caption;
+  let nextPosition;
 
   if (steps && steps.length > 0) {
     firstDate = steps[0].startDate;
     lastDate = steps[steps.length - 1].endDate;
     caption = <ShowTripDates />;
+
+    // Add next position to Create state
+    nextPosition = steps[steps.length - 1].position + 1;
+    dispatch(changeValue('stepPosition', nextPosition));
   }
 
   if (steps && steps.length === 0) {
     caption = <ShowAddStep />;
+
+    // Add next position to Create state
+    dispatch(changeValue('stepPosition', 1));
   }
 
   return !trip ? null : (

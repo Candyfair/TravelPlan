@@ -7,13 +7,14 @@ import Input from 'src/components/Input';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setField, showCalendar, showTimePicker } from '../../redux/actions/time';
-import { changeValue, setIcon } from '../../redux/actions/create';
+import { addStep, changeValue, setIcon } from '../../redux/actions/create';
 
 import * as CONSTANTS from '../../utils/constants';
 import Icon from '../Icon';
 
 import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
 import Calendar from '../ModalDisplay/Calendar';
+import { changeTitle } from '../../redux/actions/modals';
 
 // == Component
 const CreateStep = () => {
@@ -23,6 +24,10 @@ const CreateStep = () => {
     endTime,
     startDate,
     endDate,
+    travelName,
+    departurePoint,
+    arrivalPoint,
+    stepType,
   } = useSelector((state) => state.create);
 
   const dispatch = useDispatch();
@@ -107,7 +112,6 @@ const CreateStep = () => {
     }
   };
 
-
   // Show time picker & calendar
   const { picker, calendar } = useSelector((state) => state.time);
 
@@ -148,6 +152,38 @@ const CreateStep = () => {
       updatedEndDate = moment(endDate).format('DD/MM/YYYY');
     }
   }, [startTime, endTime, startDate, endDate]);
+
+  // Add step to the trip
+  const handleCreateStep = () => {
+    // Check if mandatory fields are complete - EXIT if not
+    if (stepType === '' || travelName === '' || departurePoint === '' || startDate === '' || startTime === '') return dispatch(changeTitle('*** PLEASE FILL IN ALL FIELDS ***'));
+
+    // Complete fields for hotel
+    if (stepType === 11) {
+      dispatch(changeValue('arrivalPoint', departurePoint));
+
+      // Complete check-out date if left empty
+      if (startDate !== '' && endDate === '') {
+        const nextDay = moment(moment(startDate).add(1, 'days')).format('YYYY-MM-DD');
+        dispatch(changeValue('endDate', nextDay));
+      }
+
+      // Complete check-out time if left empty
+      if (startTime !== '' && endTime === '') {
+        dispatch(changeValue('endTime', '10:00:00'));
+      }
+    }
+
+    // Complete fields for restaurant
+    if (stepType === 12) {
+      dispatch(changeValue('arrivalPoint', departurePoint));
+      dispatch(changeValue('endDate', startDate));
+      dispatch(changeValue('endTime', startTime));
+    }
+
+    // Validate dispatch
+    dispatch(addStep());
+  };
 
   return (
     <form className="create__wrapper">
@@ -439,6 +475,7 @@ const CreateStep = () => {
       <button
         type="button"
         className="create__form__button"
+        onClick={handleCreateStep}
       >
         Add step
       </button>
