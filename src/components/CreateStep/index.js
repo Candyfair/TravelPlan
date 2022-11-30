@@ -15,11 +15,13 @@ import Icon from '../Icon';
 
 import TimePicker from '../ModalDisplay/TimePicker/TimePicker';
 import Calendar from '../ModalDisplay/Calendar';
-import { changeTitle } from '../../redux/actions/modals';
+import { changeTitle, setModal } from '../../redux/actions/modals';
 
 // == Component
 const CreateStep = () => {
   const {
+    id,
+    slug,
     icon,
     startTime,
     endTime,
@@ -33,7 +35,7 @@ const CreateStep = () => {
   } = useSelector((state) => state.create);
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // Array for transport options
   const options = useSelector((state) => state.types.list);
@@ -158,7 +160,7 @@ const CreateStep = () => {
 
   // Close modal after submitting info
   const handleCloseModal = () => {
-    console.log('Fermer la modale');
+    dispatch(setModal(false, ''));
   };
 
   // Add step to the trip
@@ -197,15 +199,13 @@ const CreateStep = () => {
 
     // Validate dispatch
     dispatch(addStep());
-
-    handleCloseModal();
   };
 
   // Wait until the API has answered to redirect to new trip's page
   useEffect(() => {
     if (stepAdded) {
-      // navigate(`/schedule/${id}/${slug}`);
       console.log('L\'API a répondu');
+      handleCloseModal();
     }
   }, [stepAdded]);
 

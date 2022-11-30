@@ -21,13 +21,16 @@ import * as CONSTANTS from '../../utils/constants';
 const Schedule = () => {
   const dispatch = useDispatch();
   const { baseURL } = CONSTANTS.API;
-  const { id } = useParams();
+  const { id, slug } = useParams();
 
   useEffect(() => {
     // Empty Create state
     dispatch(changeValue('tripName', ''));
-    dispatch(changeValue('slug', ''));
     dispatch(changeValue('position', ''));
+
+    // Get id and slug in state
+    dispatch(changeValue('slug', slug));
+    dispatch(changeValue('id', id));
 
     // API call
     axios.get(`${baseURL}/trips/${id}`)
@@ -63,6 +66,19 @@ const Schedule = () => {
     dispatch(changeValue('id', id));
     dispatch(setModal(true, 'step'));
   };
+
+  // Reload page when modal is closed
+  const { modal } = useSelector((state) => state.modals);
+  const reload = () => window.location.reload;
+
+  // TODO
+  // Ne rafraîchit pas la page !!!
+  useEffect(() => {
+    if (!modal) {
+      console.log('Je refresh la page Schedule');
+      reload();
+    }
+  }, [modal]);
 
   // Choice of subtitle + get last step's position
   let caption;
