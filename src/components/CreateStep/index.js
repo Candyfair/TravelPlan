@@ -158,9 +158,14 @@ const CreateStep = () => {
     }
   }, [startTime, endTime, startDate, endDate]);
 
-  // Close modal after submitting info
+  // Close modal after submitting info and reload Schedule page
+  const reload = () => {
+    window.location.reload();
+  };
+
   const handleCloseModal = () => {
     dispatch(setModal(false, ''));
+    reload();
   };
 
   // Add step to the trip

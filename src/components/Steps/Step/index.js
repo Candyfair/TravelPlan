@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { Draggable } from 'react-beautiful-dnd';
 
 import './style.scss';
 
@@ -18,6 +19,8 @@ const Step = ({
   details,
   position,
   type,
+  cardId,
+  index,
 }) => {
   // Show transport icon
   let stepType = '';
@@ -76,58 +79,68 @@ const Step = ({
   const nbNights = arrivalDate.diff(departureDate, 'days');
 
   return (
-    <>
-      <div className="trip" key={id}>
-        {/* First frame */}
-        <div className={`trip__frame${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
-          <p className="trip__frame__date">{moment(departureDate).format('DD MMM', true)}</p>
+    <Draggable draggableId={cardId} index={index}>
+      { (provided) => (
 
-          {/* <div className="trip__frame__transport"> */}
-          {
+        <div
+          className="trip"
+          key={id}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          {/* First frame */}
+          <div className={`trip__frame${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
+            <p className="trip__frame__date">{moment(departureDate).format('DD MMM', true)}</p>
+
+            {/* <div className="trip__frame__transport"> */}
+            {
             type
             && <Icon icon={stepType} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
           }
-          <p className="trip__frame__transport__name">{travelName}</p>
-          {/* </div> */}
-        </div>
-
-        {/* Middle part */}
-        <div className={`trip__middle${type.code === 'hotel' ? ' hide' : ''}`}>
-
-          <div className="trip__middle__timetable">
-            <p className="trip__middle__time">{moment(startTime, 'HH:mm:ss').format('HH:mm')}</p>
-            <p className="trip__middle__city">{pointDeparture}</p>
+            <p className="trip__frame__transport__name">{travelName}</p>
+            {/* </div> */}
           </div>
 
-          <div className="trip__middle_arrows">
-            <Icon
-              icon={CONSTANTS.ICONS.arrows}
-              size={22}
-              viewbox={CONSTANTS.VIEWBOX.viewboxArrows}
-            />
+          {/* Middle part */}
+          <div className={`trip__middle${type.code === 'hotel' ? ' hide' : ''}`}>
+
+            <div className="trip__middle__timetable">
+              <p className="trip__middle__time">{moment(startTime, 'HH:mm:ss').format('HH:mm')}</p>
+              <p className="trip__middle__city">{pointDeparture}</p>
+            </div>
+
+            <div className="trip__middle_arrows">
+              <Icon
+                icon={CONSTANTS.ICONS.arrows}
+                size={22}
+                viewbox={CONSTANTS.VIEWBOX.viewboxArrows}
+              />
+            </div>
+
+            <div className="trip__middle__timetable">
+              <p className="trip__middle__time">{moment(endTime, 'HH:mm:ss').format('HH:mm')}</p>
+              <p className="trip__middle__city">{pointArrival}</p>
+            </div>
           </div>
 
-          <div className="trip__middle__timetable">
-            <p className="trip__middle__time">{moment(endTime, 'HH:mm:ss').format('HH:mm')}</p>
-            <p className="trip__middle__city">{pointArrival}</p>
+          {/* Case: hotel */}
+          <div className={`trip__middle${type.code === 'hotel' ? ' center' : ' hide'}`}>
+            <p className="trip__middle__stay-label">{nbNights} night{nbNights > 1 ? 's' : ''} in</p>
+            <p className={`trip__middle__stay${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>{pointDeparture}</p>
+            <p className="trip__middle__checkin-label">check-in: {moment(startTime, 'HH:mm:ss').format('HH:mm')} | check-out: {moment(endTime, 'HH:mm:ss').format('HH:mm')}</p>
+
+          </div>
+
+          {/* Last frame */}
+          <div className={`trip__frame details${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
+            <p className="trip__frame__details">{details}</p>
+
           </div>
         </div>
 
-        {/* Case: hotel */}
-        <div className={`trip__middle${type.code === 'hotel' ? ' center' : ' hide'}`}>
-          <p className="trip__middle__stay-label">{nbNights} night{nbNights > 1 ? 's' : ''} in</p>
-          <p className={`trip__middle__stay${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>{pointDeparture}</p>
-          <p className="trip__middle__checkin-label">check-in: {moment(startTime, 'HH:mm:ss').format('HH:mm')} | check-out: {moment(endTime, 'HH:mm:ss').format('HH:mm')}</p>
-
-        </div>
-
-        {/* Last frame */}
-        <div className={`trip__frame details${moment(moment(arrivalDate).add(1, 'days')).diff(moment()) < 0 ? ' inactive' : ''}`}>
-          <p className="trip__frame__details">{details}</p>
-
-        </div>
-      </div>
-    </>
+      )}
+    </Draggable>
   );
 };
 
@@ -143,6 +156,8 @@ Step.propTypes = {
   pointDeparture: PropTypes.string.isRequired,
   pointArrival: PropTypes.string.isRequired,
   details: PropTypes.string.isRequired,
+  cardId: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Step;

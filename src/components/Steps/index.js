@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Droppable } from 'react-beautiful-dnd';
 
 import './style.scss';
 
@@ -8,18 +9,27 @@ const Steps = ({ steps }) => {
   console.log('Je suis dans le composant Steps');
 
   return !steps ? null : (
-    <div className="trip-container">
-      {
-        steps && steps.map((step) => (
-          <Step
-            key={step.id}
-            {...step}
-          />
-        ))
-      }
-
-    </div>
-
+    <Droppable droppableId="1">
+      {(provided) => (
+        <div
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+          className="trip-container"
+        >
+          {
+            steps && steps.map((step, index) => (
+              <Step
+                key={step.id}
+                index={index}
+                cardId={String(step.id)}
+                {...step}
+              />
+            ))
+          }
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   );
 };
 

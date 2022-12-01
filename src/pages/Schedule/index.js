@@ -3,6 +3,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import axios from 'axios';
 import moment from 'moment';
@@ -28,7 +29,7 @@ const Schedule = () => {
     dispatch(changeValue('tripName', ''));
     dispatch(changeValue('position', ''));
 
-    // Get id and slug in state
+    // Keep id and slug in Create state
     dispatch(changeValue('slug', slug));
     dispatch(changeValue('id', id));
 
@@ -67,19 +68,6 @@ const Schedule = () => {
     dispatch(setModal(true, 'step'));
   };
 
-  // Reload page when modal is closed
-  const { modal } = useSelector((state) => state.modals);
-  const reload = () => window.location.reload;
-
-  // TODO
-  // Ne rafraîchit pas la page !!!
-  useEffect(() => {
-    if (!modal) {
-      console.log('Je refresh la page Schedule');
-      reload();
-    }
-  }, [modal]);
-
   // Choice of subtitle + get last step's position
   let caption;
   let nextPosition;
@@ -101,8 +89,15 @@ const Schedule = () => {
     dispatch(changeValue('stepPosition', 1));
   }
 
+  // Drag and drop
+  const onDragEnd = () => {
+    // TODO: reordering logic
+  };
+
   return !trip ? null : (
-    <>
+    <DragDropContext
+      onDragEnd={onDragEnd}
+    >
       <div className="content__header">
         <h1 className="main-title">{trip.tripName}</h1>
         {caption}
@@ -120,7 +115,7 @@ const Schedule = () => {
         <Icon icon={CONSTANTS.ICONS.plus} size={27} viewbox={CONSTANTS.VIEWBOX.viewboxIcons} />
       </button>
 
-    </>
+    </DragDropContext>
   );
 };
 
