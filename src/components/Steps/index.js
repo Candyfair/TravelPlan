@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
+import { useState } from 'react';
 
 import './style.scss';
 
@@ -9,7 +10,7 @@ const Steps = ({ steps }) => {
   console.log('Je suis dans le composant Steps');
 
   return !steps ? null : (
-    <Droppable droppableId="1">
+    <Droppable droppableId="trip">
       {(provided) => (
         <div
           {...provided.droppableProps}

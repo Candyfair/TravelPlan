@@ -1,6 +1,7 @@
 export const SET_STEP = 'SET_JOURNEY';
 export const SET_DESTINATION = 'SET_DESTINATION';
 
+// Header menu
 export const setStep = (value) => ({
   type: SET_STEP,
   value,

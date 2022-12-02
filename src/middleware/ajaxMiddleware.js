@@ -2,7 +2,11 @@
 import api from './api';
 
 import { ADD_TRIP, ADD_STEP, changeValue } from '../redux/actions/create';
-import { FETCH_TRIPS, receivedTrips, setLoading } from '../redux/actions/trips';
+import {
+  FETCH_TRIPS,
+  receivedTrips,
+  setLoading,
+} from '../redux/actions/trips';
 import { FETCH_USERS_TRIPS, receivedUsersTrips } from '../redux/actions/users';
 import { FETCH_TYPES, receivedTypes } from '../redux/actions/types';
 

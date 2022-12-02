@@ -1,7 +1,6 @@
-/* eslint-disable arrow-body-style */
 // Imports
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
 
@@ -24,6 +23,8 @@ const Schedule = () => {
   const { baseURL } = CONSTANTS.API;
   const { id, slug } = useParams();
 
+  // const { list } = useSelector((state) => state.trips);
+
   useEffect(() => {
     // Empty Create state
     dispatch(changeValue('tripName', ''));
@@ -33,6 +34,13 @@ const Schedule = () => {
     dispatch(changeValue('slug', slug));
     dispatch(changeValue('id', id));
 
+    // if (list) {
+    // // Filter selected trip
+    //   const foundTrip = list.filter((oneTrip) => String(oneTrip.id) === id);
+    //   const trip = receivedTrip(foundTrip);
+    //   dispatch(trip);
+    // }
+
     // API call
     axios.get(`${baseURL}/trips/${id}`)
       .then((res) => {
@@ -41,26 +49,37 @@ const Schedule = () => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   if (list) {
+  //   // Filter selected trip
+  //     const foundTrip = list.filter((oneTrip) => String(oneTrip.id) === id);
+  //     const trip = receivedTrip(foundTrip);
+  //     dispatch(trip);
+  //   }
+  // }, [list]);
+
   const trip = useSelector((state) => state.trips.selectedTrip);
 
+  let { steps } = trip;
+
+  // Reorder steps according to position
+  if (steps) {
+    steps = steps.sort((a, b) => a.position - b.position);
+  }
+
   // Get trip's start and end dates
-  const { steps } = trip;
   let firstDate = '';
   let lastDate = '';
 
-  const ShowTripDates = () => {
-    return (
-      firstDate !== lastDate
-        ? <h2 className="subtitle">{moment(firstDate).format('Do MMMM')} - {moment(lastDate).format('Do MMMM YYYY')}</h2>
-        : <h2 className="subtitle">{moment(lastDate).format('Do MMMM YYYY')}</h2>
-    );
-  };
+  const ShowTripDates = () => (
+    firstDate !== lastDate
+      ? <h2 className="subtitle">{moment(firstDate).format('Do MMMM')} - {moment(lastDate).format('Do MMMM YYYY')}</h2>
+      : <h2 className="subtitle">{moment(lastDate).format('Do MMMM YYYY')}</h2>
+  );
 
-  const ShowAddStep = () => {
-    return (
-      <h2 className="subtitle">Now add a step to your trip by clicking on the button below!</h2>
-    );
-  };
+  const ShowAddStep = () => (
+    <h2 className="subtitle">Now add a step to your trip by clicking on the button below!</h2>
+  );
 
   // Open Add Step modal
   const handleOpenModal = () => {
@@ -90,13 +109,24 @@ const Schedule = () => {
   }
 
   // Drag and drop
-  const onDragEnd = () => {
-    // TODO: reordering logic
+  const [arraySteps, updateArraySteps] = useState(steps);
+  if (steps) {
+    console.log('STEPS : ', steps);
+    console.log('ARRAYSTEPS : ', arraySteps);
+  }
+
+  const handleOnDragEnd = (result) => {
+    console.log(result);
+    const items = Array.from(steps);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    updateArraySteps(items);
   };
 
   return !trip ? null : (
     <DragDropContext
-      onDragEnd={onDragEnd}
+      onDragEnd={handleOnDragEnd}
     >
       <div className="content__header">
         <h1 className="main-title">{trip.tripName}</h1>
