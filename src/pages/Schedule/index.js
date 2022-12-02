@@ -7,7 +7,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import axios from 'axios';
 import moment from 'moment';
 
-import { receivedTrip, reorderSteps } from '../../redux/actions/trips';
+import { receivedTrip, reorderSteps, setLoading } from '../../redux/actions/trips';
 import { changeValue } from '../../redux/actions/create';
 import { setModal } from '../../redux/actions/modals';
 
@@ -101,7 +101,6 @@ const Schedule = () => {
   }
 
   // Drag and drop
-
   const handleOnDragEnd = (result) => {
     console.log(result);
 
@@ -115,6 +114,23 @@ const Schedule = () => {
     dispatch(reorderSteps(items));
   };
 
+  // Update API with new step position after drag and drop
+  const handleChangePosition = (stepId, position) => {
+    // Force conversion to form-urlencoded format (Form data by default)
+    const updateStep = new URLSearchParams();
+    updateStep.append('position', position);
+    console.log('--- UPDATE STEP :', updateStep);
+
+    axios.patch(`${baseURL}/steps/${stepId}`, updateStep)
+      .then((res) => {
+        console.log('Changing position in API: ', res.data, 'id:', res.data.id, 'position:', res.data.position);
+      })
+      .catch((err) => {
+        console.log('Erreur sur la route /PATCH steps', err.response.data);
+        dispatch(setLoading(false));
+      });
+  };
+
   useEffect(() => {
     if (steps && stepsOrder) {
       console.log('L\'ordre des steps a été modifié: ', stepsOrder);
@@ -124,6 +140,12 @@ const Schedule = () => {
       console.log('------ NOUVEL ARRAY STEPS: ', steps);
 
       // Réaffecter de nouvelles valeurs 'positions'
+      let newPosition = 1;
+      steps.forEach((step) => {
+        handleChangePosition(step.id, newPosition);
+        newPosition += 1;
+      });
+      console.log('------ NOUVELLES POSITIONS : ', steps);
 
       // Mettre à jour les steps dans la base de donnée (route PATCH avec l'ID du step)
     }
