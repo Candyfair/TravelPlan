@@ -7,7 +7,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import axios from 'axios';
 import moment from 'moment';
 
-import { receivedTrip } from '../../redux/actions/trips';
+import { receivedTrip, reorderSteps } from '../../redux/actions/trips';
 import { changeValue } from '../../redux/actions/create';
 import { setModal } from '../../redux/actions/modals';
 
@@ -34,13 +34,6 @@ const Schedule = () => {
     dispatch(changeValue('slug', slug));
     dispatch(changeValue('id', id));
 
-    // if (list) {
-    // // Filter selected trip
-    //   const foundTrip = list.filter((oneTrip) => String(oneTrip.id) === id);
-    //   const trip = receivedTrip(foundTrip);
-    //   dispatch(trip);
-    // }
-
     // API call
     axios.get(`${baseURL}/trips/${id}`)
       .then((res) => {
@@ -49,22 +42,21 @@ const Schedule = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   if (list) {
-  //   // Filter selected trip
-  //     const foundTrip = list.filter((oneTrip) => String(oneTrip.id) === id);
-  //     const trip = receivedTrip(foundTrip);
-  //     dispatch(trip);
-  //   }
-  // }, [list]);
-
   const trip = useSelector((state) => state.trips.selectedTrip);
-
   let { steps } = trip;
 
   // Reorder steps according to position
+  const { stepsOrder } = useSelector((state) => state.trips);
+  const initialStepOrder = [];
+
   if (steps) {
     steps = steps.sort((a, b) => a.position - b.position);
+
+    // Create an array with the current order of indexes
+    steps.forEach((step) => {
+      initialStepOrder.push(step.position);
+    });
+    console.log('----- INITIAL STEPS ORDER: ', initialStepOrder);
   }
 
   // Get trip's start and end dates
@@ -109,20 +101,33 @@ const Schedule = () => {
   }
 
   // Drag and drop
-  const [arraySteps, updateArraySteps] = useState(steps);
-  if (steps) {
-    console.log('STEPS : ', steps);
-    console.log('ARRAYSTEPS : ', arraySteps);
-  }
 
   const handleOnDragEnd = (result) => {
     console.log(result);
-    const items = Array.from(steps);
+
+    const items = Array.from(initialStepOrder);
+    console.log('----- INITIAL ITEMS: ', items);
+
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
+    console.log('----- NEW ITEMS: ', items);
 
-    updateArraySteps(items);
+    dispatch(reorderSteps(items));
   };
+
+  useEffect(() => {
+    if (steps && stepsOrder) {
+      console.log('L\'ordre des steps a été modifié: ', stepsOrder);
+
+      // refaire le tri de steps en fonction du nouveau stepsOrder
+      steps = steps.sort((a, b) => stepsOrder.indexOf(a.position) - stepsOrder.indexOf(b.position));
+      console.log('------ NOUVEL ARRAY STEPS: ', steps);
+
+      // Réaffecter de nouvelles valeurs 'positions'
+
+      // Mettre à jour les steps dans la base de donnée (route PATCH avec l'ID du step)
+    }
+  }, [stepsOrder]);
 
   return !trip ? null : (
     <DragDropContext

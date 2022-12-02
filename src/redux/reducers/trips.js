@@ -1,11 +1,12 @@
 import {
-  FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS, SET_LOADING,
+  FETCH_TRIPS, RECEIVED_TRIP, RECEIVED_TRIPS, REORDER_STEPS, SET_LOADING,
 } from '../actions/trips';
 
 export const initialState = {
   loading: false,
   list: [],
   selectedTrip: [],
+  stepsOrder: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -34,6 +35,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loading: action.payload,
+      };
+
+    case REORDER_STEPS:
+      return {
+        ...state,
+        stepsOrder: action.value,
       };
 
     default:

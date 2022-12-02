@@ -2,6 +2,7 @@ export const FETCH_TRIPS = 'FETCH_TRIPS';
 export const RECEIVED_TRIPS = 'RECEIVED_TRIPS';
 export const RECEIVED_TRIP = 'RECEIVED_TRIP';
 export const SET_LOADING = 'SET_LOADING';
+export const REORDER_STEPS = 'REORDER_STEPS';
 
 export const fetchTrips = () => ({
   type: FETCH_TRIPS,
@@ -20,4 +21,9 @@ export const receivedTrip = (payload) => ({
 export const setLoading = (payload) => ({
   type: SET_LOADING,
   payload,
+});
+
+export const reorderSteps = (value) => ({
+  type: REORDER_STEPS,
+  value,
 });
